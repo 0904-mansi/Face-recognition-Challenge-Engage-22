@@ -11,7 +11,7 @@ We all know that our Face is a unique and crucial part of the human body structu
 ## Workflow of Project
 <img width="500" alt="Screenshot 2022-05-21 at 2 51 35 PM" src="https://user-images.githubusercontent.com/81081105/169645049-0b84ff23-5b71-424c-9820-fa55a84143a5.png">
 
-
+ 
 
 ## Model Build on Keeping These Criteria in Mind
 
@@ -23,3 +23,11 @@ We all know that our Face is a unique and crucial part of the human body structu
 6. Accessibility
 7. User friendly
 8. Accuracy 
+
+## Prerequisite
+
+Python version must be `3.8.10`
+Tkinter version must be `8.6`
+
+`Note: Tk interface can be different for different systems and their versions`
+
