@@ -24,11 +24,11 @@ We all know that our Face is a unique and crucial part of the human body structu
 7. User friendly
 8. Accuracy 
 
-## Prerequisite
+## Prerequisite 
 
 1. Python version must be `3.8.10`
 2. Tkinter version must be `8.6`
-3. ![Xampp](https://www.apachefriends.org/download.html) must be installed on your system
+3. [Xampp](https://www.apachefriends.org/download.html) must be installed on your system
 
 `Note: Tk interface can be different for different systems and their versions`
 
