@@ -11,3 +11,14 @@ We all know that our Face is a unique and crucial part of the human body structu
 ## Workflow of Project
 
 ![Workflow Pipeline](https://my.visme.co/view/vd79ro3z-g1d5koxzxpgx26m7)
+
+## Model Build on Keeping These Criteria in Mind
+
+1. Performance of model
+2. Model selection
+3. Scalability
+4. Scalability of model
+5. Retrainable model
+6. Accessibility
+7. User friendly
+8. Accuracy 
