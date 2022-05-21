@@ -27,7 +27,9 @@ We all know that our Face is a unique and crucial part of the human body structu
 ## Prerequisite
 
 Python version must be `3.8.10`
+
 Tkinter version must be `8.6`
 
+![Xampp](https://www.apachefriends.org/download.html) must be installed on your system
 `Note: Tk interface can be different for different systems and their versions`
 
