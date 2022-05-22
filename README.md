@@ -40,3 +40,9 @@ We all know that our Face is a unique and crucial part of the human body structu
 4. Install the requiremnts using command `pip or pip3 install -r requirements.txt`.
 5. Run the main python file `python or python3 main.py`.
 6. Now experience the GUI and features of the project.
+
+## Documents related to project
+
+1. [My Roadmap](https://docs.google.com/document/d/1Vvo75mWCfiRvxTxxgcbv9ka2XeGkBIDrIBSEelaaudQ/edit?usp=sharing)
+2. [Presentation]()
+3. [Youtube Video]()
