@@ -36,6 +36,7 @@ We all know that our Face is a unique and crucial part of the human body structu
 
 1. start your mysql and apache server and navigate to [localhost/phpmyadmin](localhost/phpmyadmin) create database of name `criminaldb`.
 2. Import `table.sql` file into your newly created `criminaldb`. 
-3. Install the requiremnts using command `pip or pip3 install -r requirements.txt`.
-4. Run the main python file `python or python3 main.py`.
-5. Now experience the GUI and features of the project.
+3. run this sql command in your criminaldb `SET GLOBAL sql_mode='';`
+4. Install the requiremnts using command `pip or pip3 install -r requirements.txt`.
+5. Run the main python file `python or python3 main.py`.
+6. Now experience the GUI and features of the project.
