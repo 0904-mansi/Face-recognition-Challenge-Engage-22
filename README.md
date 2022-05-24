@@ -42,6 +42,8 @@ Python has become one of the most popular programming languages in the world in 
 
 ### 3. Open-CV <img width="30" src="https://img.icons8.com/color/48/000000/opencv.png"/>
 
+OpenCV is a great tool for image processing and performing computer vision tasks. It is an open-source library that can be used to perform tasks like face detection, objection tracking, landmark detection, and much more.
+
 ## Prerequisite 
 
 1. Python version must be `3.8.10`
