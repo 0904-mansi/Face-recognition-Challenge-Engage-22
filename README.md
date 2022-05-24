@@ -41,6 +41,14 @@ We all know that our Face is a unique and crucial part of the human body structu
 5. Run the main python file `python or python3 main.py`.
 6. Now experience the GUI and features of the project.
 
+## Glimps of my Application
+
+Login Page            |  Sign-Up Page
+:-------------------------:|:-------------------------:
+![](https://user-images.githubusercontent.com/81081105/170031961-682d7f02-45e0-47b0-b8de-12fbb8576287.png)  |  ![](https://user-images.githubusercontent.com/81081105/170031999-d0f4ab21-aec8-4020-9466-d08fbf346321.png)
+
+
+
 ## Documents related to project
 
 1. [My Roadmap](https://docs.google.com/document/d/1Vvo75mWCfiRvxTxxgcbv9ka2XeGkBIDrIBSEelaaudQ/edit?usp=sharing)
