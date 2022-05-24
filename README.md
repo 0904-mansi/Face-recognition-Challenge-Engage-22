@@ -42,8 +42,6 @@ Python has become one of the most popular programming languages in the world in 
 
 ### 3. Open-CV <img width="30" src="https://img.icons8.com/color/48/000000/opencv.png"/>
 
-OpenCV is a great tool for image processing and performing computer vision tasks. It is an open-source library that can be used to perform tasks like face detection, objection tracking, landmark detection, and much more.
-
 ## Prerequisite 
 
 1. Python version must be `3.8.10`
@@ -63,12 +61,18 @@ OpenCV is a great tool for image processing and performing computer vision tasks
 
 ## Glimps of my Application
 
-Login Page            |  Sign-Up Page
+**Login Page**            |  **Sign-Up Page**
 :-------------------------:|:-------------------------:
 ![](https://user-images.githubusercontent.com/81081105/170031961-682d7f02-45e0-47b0-b8de-12fbb8576287.png)  |  ![](https://user-images.githubusercontent.com/81081105/170031999-d0f4ab21-aec8-4020-9466-d08fbf346321.png)
 
-Home Page 
-<img width="1440" alt="Screenshot 2022-05-24 at 11 31 46 AM" src="https://user-images.githubusercontent.com/81081105/170033529-e9fd6f49-97ee-4882-9ef2-8f62a134da8f.png">
+**Home Page**
+
+<img width="800" alt="Screenshot 2022-05-24 at 11 09 27 PM" src="https://user-images.githubusercontent.com/81081105/170098347-9f328ba0-4f63-4f26-968c-395b1c20663f.png">
+
+**Criminal Detection**            |  **Finding Missing People**
+:-------------------------:|:-------------------------:
+<img width="1212" alt="Screenshot 2022-05-24 at 11 14 45 PM" src="https://user-images.githubusercontent.com/81081105/170099565-dfc2e897-3602-4678-9ce0-592c24649e5a.png">  |  <img width="1212" alt="Screenshot 2022-05-24 at 11 19 00 PM" src="https://user-images.githubusercontent.com/81081105/170100191-829547af-66b5-4cc1-9d42-c8ea06a16556.png">
+
 
 
 ## Documents related to project
