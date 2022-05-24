@@ -33,10 +33,14 @@ Python has a lot of GUI frameworks, but Tkinter is the only framework that’s b
 
 However, Tkinter is lightweight and relatively painless to use compared to other frameworks. This makes it a compelling choice for building GUI applications in Python, especially for applications where a modern sheen is unnecessary, and the top priority is to quickly build something that’s functional and cross-platform.
 
-### 2. Python <img src="https://img.icons8.com/color/48/000000/python--v1.png"/>
+### 2. Python <img width="30" src="https://img.icons8.com/color/48/000000/python--v1.png"/>
+
+Python is a computer programming language often used to build websites and software, automate tasks, and conduct data analysis. Python is a general-purpose language, meaning it can be used to create a variety of different programs and isn't specialized for any specific problems. Python is dynamically-typed and garbage-collected. 
+
+Python has become one of the most popular programming languages in the world in recent years. It's used in everything from machine learning to building websites and software testing. It can be used by developers and non-developers alike.
 
 
-
+### 3. Open-CV <img width="30" src="https://img.icons8.com/color/48/000000/opencv.png"/>
 
 ## Prerequisite 
 
