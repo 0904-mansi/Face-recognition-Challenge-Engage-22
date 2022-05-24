@@ -47,6 +47,8 @@ Login Page            |  Sign-Up Page
 :-------------------------:|:-------------------------:
 ![](https://user-images.githubusercontent.com/81081105/170031961-682d7f02-45e0-47b0-b8de-12fbb8576287.png)  |  ![](https://user-images.githubusercontent.com/81081105/170031999-d0f4ab21-aec8-4020-9466-d08fbf346321.png)
 
+Home Page 
+<img width="1440" alt="Screenshot 2022-05-24 at 11 31 46 AM" src="https://user-images.githubusercontent.com/81081105/170033529-e9fd6f49-97ee-4882-9ef2-8f62a134da8f.png">
 
 
 ## Documents related to project
