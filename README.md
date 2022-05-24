@@ -54,5 +54,5 @@ Home Page
 ## Documents related to project
 
 1. [My Roadmap](https://docs.google.com/document/d/1Vvo75mWCfiRvxTxxgcbv9ka2XeGkBIDrIBSEelaaudQ/edit?usp=sharing)
-2. [Presentation]()
+2. [Presentation](https://docs.google.com/presentation/d/1djK7o2FT_ateDKO9a9j9DQfC6ofK4lAmsMMufQHv-r0/edit?usp=sharing)
 3. [Youtube Video]()
