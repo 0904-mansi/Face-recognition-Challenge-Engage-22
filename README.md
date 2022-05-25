@@ -74,6 +74,11 @@ Python has become one of the most popular programming languages in the world in 
 <img width="1212" alt="Screenshot 2022-05-24 at 11 14 45 PM" src="https://user-images.githubusercontent.com/81081105/170099565-dfc2e897-3602-4678-9ce0-592c24649e5a.png">  |  <img width="1212" alt="Screenshot 2022-05-24 at 11 19 00 PM" src="https://user-images.githubusercontent.com/81081105/170100191-829547af-66b5-4cc1-9d42-c8ea06a16556.png">
 
 
+**Register Criminal**            |  **Register Missing Person**
+:-------------------------:|:-------------------------:
+ <img width="1212" alt="Screenshot 2022-05-25 at 3 42 58 PM" src="https://user-images.githubusercontent.com/81081105/170239156-76991442-83ab-4ccf-bbdc-33f81f67c850.png">                           | <img width="1212" alt="Screenshot 2022-05-25 at 3 17 40 PM" src="https://user-images.githubusercontent.com/81081105/170234114-602f0d49-ffca-4107-8d05-825a9362dc74.png">
+
+    
 
 ## Documents related to project
 
