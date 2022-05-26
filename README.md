@@ -80,7 +80,7 @@ Python has become one of the most popular programming languages in the world in 
 
 **Image Observation**      |  **Image Observation**
 :-------------------------:|:-------------------------:
-  <img width="1212" alt="Screenshot 2022-05-26 at 3 21 42 PM" src="https://user-images.githubusercontent.com/81081105/170464952-06564e88-948a-4686-87ff-0d5bee43ef5d.png">    | <img width="1212" alt="Screenshot 2022-05-26 at 3 30 11 PM" src="https://user-images.githubusercontent.com/81081105/170465797-03a57ab7-fee8-4bdf-b2a1-ae448f03a33b.png">
+  <img width="1212" alt="Screenshot 2022-05-25 at 3 47 12 PM" src="https://user-images.githubusercontent.com/81081105/170466498-235c6c32-eaf0-4103-9eea-3380075084c7.png"> | <img width="1212" alt="Screenshot 2022-05-26 at 3 30 11 PM" src="https://user-images.githubusercontent.com/81081105/170465797-03a57ab7-fee8-4bdf-b2a1-ae448f03a33b.png">
 
 
                 
