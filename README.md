@@ -102,6 +102,11 @@ https://user-images.githubusercontent.com/81081105/170838208-4eea8b95-a8a3-428b-
 <img width="1152" alt="Screenshot 2022-05-28 at 4 35 31 PM" src="https://user-images.githubusercontent.com/81081105/170837449-361ae831-e024-40b0-9413-a1bc0fa94a35.png">
 
 
+**Note:** If you might face the error of `segmentation fault` in your system then you must follow this two steps to run the project correctly.
+
+1. comment the line 31 in `main.py` file.
+2. Uncomment the lines 296, 297 and 302 in `main.py` file also uncomment that complete mainfuntion in `main.py` file.  
+
 ## Documents related to project
 
 1. [My Roadmap](https://docs.google.com/document/d/1Vvo75mWCfiRvxTxxgcbv9ka2XeGkBIDrIBSEelaaudQ/edit?usp=sharing)
