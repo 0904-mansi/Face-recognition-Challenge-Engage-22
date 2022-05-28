@@ -1,3 +1,4 @@
+# importing required modules
 from tkinter import *
 import webbrowser
 from tkinter import *
@@ -72,7 +73,7 @@ from main_login import *
 
 
 
-#       #----------------------------------------------------------- Signup Window --------------------------------------------------
+#       ----------------------------------------------------------- Signup Window --------------------------------------------------
 
 #       def signup():
 #             # signup database connect 
@@ -157,7 +158,7 @@ from main_login import *
 #             very_pass = Label(winsignup, text= "Verify Password:" , font='Verdana 10 bold')
 #             very_pass.place(x=80,y=310)
 
-#             # Entry Box ------------------------------------------------------------------
+#             #--------------------------------------------------- Entry Box ------------------------------------------------------------------
 
 #             first_name = StringVar()
 #             last_name = StringVar()
@@ -219,6 +220,8 @@ from main_login import *
 #       # window size
 #       win.maxsize(width=700 ,  height=500)
 #       win.minsize(width=700 ,  height=500)
+
+#       # adding bg image
 #       bgg1 = Image.open("bg.png")
 #       bgg1 = bgg1.resize((1500, 900),Image.ANTIALIAS)
 #       pimg1 = ImageTk.PhotoImage(bgg1)
@@ -267,9 +270,8 @@ from main_login import *
 #       win.mainloop()
 
 
+#------------------------------------------------------------ Main Window ----------------------------------------
 
-      #------------------------------------------------------------ Login Window ----------------------------------------
-# === Home
 window = tk.Tk()
 window.title("Face-recognition challenge")
 window.geometry("1300x900")
