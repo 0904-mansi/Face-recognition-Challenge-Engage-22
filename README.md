@@ -46,18 +46,19 @@ Python has become one of the most popular programming languages in the world in 
 
 1. Python version must be `3.8.10`
 2. Tkinter version must be `8.6`
-3. [Xampp](https://www.apachefriends.org/download.html) must be installed on your system
+3. [Xampp](https://www.apachefriends.org/download.html) must be installed on your system.
 
 `Note: Tk interface can be different for different systems and their versions`
 
 ## Steps to run the project
 
-1. start your mysql and apache server and navigate to [localhost/phpmyadmin](localhost/phpmyadmin) create database of name `criminaldb`.
+1. start your mysql and apache server and navigate to localhost and create database of name `criminaldb`.
 2. Import `table.sql` file into your newly created `criminaldb`. 
 3. run this sql command in your criminaldb `SET GLOBAL sql_mode='';`
 4. Install the requiremnts using command `pip or pip3 install -r requirements.txt`.
-5. Run the main python file `python or python3 main.py`.
-6. Now experience the GUI and features of the project.
+5. Before running the file extract all the files of `Images` Folder to your root directory. 
+6. Run the main python file `python or python3 main.py`.
+7. Now experience the GUI and features of the project.
 
 ## Glimps of my Application
 
