@@ -107,6 +107,11 @@ https://user-images.githubusercontent.com/81081105/170838208-4eea8b95-a8a3-428b-
 1. comment the line 31 in `main.py` file.
 2. Uncomment the lines 296, 297 and 302 in `main.py` file also uncomment that complete mainfuntion in `main.py` file.  
 
+## Future Scope
+
+1. Fingerprint Recognition and Eye detection can be added for Observation.
+2. Webcam Support can be added as a feature.
+
 ## Documents related to project
 
 1. [My Roadmap](https://docs.google.com/document/d/1Vvo75mWCfiRvxTxxgcbv9ka2XeGkBIDrIBSEelaaudQ/edit?usp=sharing)
