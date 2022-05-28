@@ -1,10 +1,8 @@
-
+# importing required modules
 import numpy as np
 import cv2
-# from main_login import *
 
-# from final_encoding import *
-
+# using haarcascade_frontalface_default.xml file for face detection
 def detect(path):
     facedetect = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
     cam = cv2.VideoCapture(path)
