@@ -1,16 +1,15 @@
-# facerec.py
+# import required modules
 import cv2, numpy, os
 
 
 size = 2
+#using face_cascade.xml file for recognition
 haar_cascade = cv2.CascadeClassifier('face_cascade.xml')
 
 # Part 1: Create fisherRecognizer
 def train_model():
     model = cv2.face.LBPHFaceRecognizer_create()
     fn_dir = 'face_samples'
-
-    # print('Training...')
 
     (images, lables, names, id) = ([], [], {}, 0)
 
