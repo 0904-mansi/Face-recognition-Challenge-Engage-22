@@ -4,11 +4,11 @@
 
 Develop a browser-based application or a native mobile application to demonstrate application of Face Recognition technology.
 
-## Solution 
+## Solution ✨
 
 I propose criminal identification system and missing people identification for Police Department to enhance and upgrade the criminal distinguishing into a more effective and efficient approach. Technology working behind it will be face recognition, from the footage captured by the CCTV cameras our system will detect the face and recognize the criminal who is coming to that public place. The captured images of the person coming to that public place get compared with the criminal data we have in our database. If any person’s face from public place matches, the system will display their image on the system screen and will give the message with their name that the criminal is found and present in this public place.
 
-## Workflow of Project
+## Workflow of Project 🗺
 <img width="500" alt="Screenshot 2022-05-21 at 2 51 35 PM" src="https://user-images.githubusercontent.com/81081105/169645049-0b84ff23-5b71-424c-9820-fa55a84143a5.png">
 
  
