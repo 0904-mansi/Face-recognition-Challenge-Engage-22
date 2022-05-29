@@ -1,3 +1,4 @@
+# import modules
 import glob 
 import face_recognition
 import argparse
