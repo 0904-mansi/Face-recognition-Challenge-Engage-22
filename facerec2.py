@@ -1,6 +1,7 @@
-# facerec.py
+# importing modules 
 import cv2, numpy, os
 
+# using face_cascade.xml file for recognition
 size = 2
 haar_cascade = cv2.CascadeClassifier('face_cascade.xml')
 
