@@ -5,12 +5,12 @@ import pymysql
 # function for insert data in Missing.csv file 
 def insertData(data):
      # heading of csv file
-    field = ["Criminal-ID", "Address", "Phone", "Name", "Father's Name",
-    "Gender", "DOB(yyyy-mm-dd)", "Crimes Done", "Date of Arrest(yyyy-mm-dd)",
-    "Place of Arrest"]
+    field = ["Report-ID", "Name","Father's Name","Address", "Phone",
+    "Gender", "DOB(yyyy-mm-dd)", "Identification", "Date of Missing(yyyy-mm-dd)",
+    "Place of Missing"]
      # data of missing person to be written in csv file
-    x = [data['Name'], data["Father's Name"], data['Gender'], data['DOB(yyyy-mm-dd)'],
-         data['Crimes Done'], data['Date of Arrest(yyyy-mm-dd)'], data["Place of Arrest"] ]
+    x = [data['Report-ID'], data['Name'], data["Father's Name"], data['Address'], data['Phone'], data['Gender'], data['DOB(yyyy-mm-dd)'],
+         data['Identification'], data['Date of Missing(yyyy-mm-dd)'], data["Place of Missing"] ]
     filen = "Missing.csv"
     with open(filen, 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
