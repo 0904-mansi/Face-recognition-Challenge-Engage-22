@@ -263,14 +263,16 @@ def home():
         opt_menu = None
         menu_var = tk.StringVar(root)
         pages[1].lift()
-
+        # adding title in first page
         basicPageSetup(1)
         heading.configure(text="Register Criminal here",fg="white", highlightthickness=2, highlightbackground="white",bg="#051729")
+        # creating column for enter details
         right_frame.configure(text="Enter Details", fg="white", bg="#051729")
 
         btn_grid = tk.Frame(left_frame, bg="#051729")
         btn_grid.pack()
-
+        
+        #adding button for select multiple images
         tk.Button(btn_grid, text="Select Images", command=lambda: selectMultiImage(opt_menu, menu_var), font="Verdana 13 bold", bg="#000000",
             fg="white", pady=10, bd=0, highlightthickness=2,highlightbackground="#051729", activebackground="#000000",
             activeforeground="white").grid(row=0, column=0, padx=25, pady=25)
@@ -331,7 +333,7 @@ def home():
             activeforeground="white").pack(pady=25)
 
 
-
+        # recognition function
     def startRecognition():
         global img_read, img_label
 
@@ -347,7 +349,7 @@ def home():
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
         face_coords = detect_faces(gray_frame)
-
+        
         if (len(face_coords) == 0):
             messagebox.showerror("Error", "Image doesn't contain any face or face is not clear.")
         else:
@@ -395,7 +397,8 @@ def home():
         img_label = None
         active_page = 2
         pages[2].lift()
-
+        
+        # page for image observation
         basicPageSetup(2)
         heading.configure(text="Detect Criminal",  highlightthickness=2,highlightbackground="white",fg="white" )
         right_frame.configure(text="Detected Criminals", highlightthickness=2,highlightbackground="white",fg="white")
