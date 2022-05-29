@@ -1,5 +1,5 @@
 
-import imp
+# importing required modules
 from tkinter import *
 import tkinter as tk
 from tkinter import ttk, messagebox
@@ -16,7 +16,7 @@ def mainfunction():
       def close():
             win.destroy()	
 
-
+      # login function
       def login():
             if user_name.get()=="" or password.get()=="":
                   messagebox.showerror("Error","Enter username and password",parent=win)	
@@ -46,9 +46,9 @@ def mainfunction():
 
 
       #----------------------------------------------------------- Signup Window --------------------------------------------------
-
+      # signup function
       def signup():
-            # signup database connect 
+           
             def action():
                   if first_name.get()=="" or last_name.get()=="" or user_name.get()=="" or password.get()=="" or very_pass.get()=="":
                         messagebox.showerror("Error" , "All Fields Are Required" , parent = winsignup)
@@ -56,6 +56,7 @@ def mainfunction():
                         messagebox.showerror("Error" , "Password & Confirm Password Should Be Same" , parent = winsignup)
                   else:
                         try:
+                               # signup database connect 
                               con = pymysql.connect(host="localhost",user="root",password="",database="criminaldb")
                               cur = con.cursor()
                               cur.execute("select * from user_information where username=%s",user_name.get())
