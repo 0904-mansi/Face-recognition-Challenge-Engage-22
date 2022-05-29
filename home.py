@@ -185,7 +185,7 @@ def home():
             next_slide.image = next_img
             next_slide.grid(row=0, column=2, padx=60)
 
-
+    # function for register new criminal
     def register(entries, required, menu_var):
         global img_list
 
@@ -234,6 +234,7 @@ def home():
             insertData(entry_data)
             rowId=1
             if(rowId >= 0):
+                # Confirmation message
                 messagebox.showinfo("Success", "Criminal Registered Successfully.")
                 print("New Criminal registered.")
                 shutil.move(path, os.path.join('face_samples', entry_data["Name"]))
@@ -296,7 +297,7 @@ def home():
         # Adding Input Fields
         input_fields = ("Criminal-ID","Address","Phone","Name", "Father's Name", "Gender", "DOB(yyyy-mm-dd)", "Crimes Done","Date of Arrest(yyyy-mm-dd)","Place of Arrest", "Profile Image")
         ip_len = len(input_fields)
-        required = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        required = [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1]
 
         entries = []
         for i, field in enumerate(input_fields):
@@ -307,7 +308,8 @@ def home():
             label = tk.Text(row, width=20, height=1, bg="#051729", fg="white", font="Verdana 13", highlightthickness=0, bd=0)
             label.insert("insert", field)
             label.pack(side="left")
-
+            
+            # making fields required
             if(required[i] == 1):
                 label.tag_configure("star", foreground="red", font="Verdana 13 bold")
                 label.insert("end", "  *", "star")
@@ -326,17 +328,15 @@ def home():
                 menu = opt_menu.nametowidget(opt_menu.menuname)
                 menu.configure(font="Verdana 13", bg="white", activebackground="#000000", bd=0)
 
-        # print(entries)
-
         tk.Button(scroll_frame, text="Register", command=lambda: register(entries, required, menu_var), font="Verdana 13 bold",
             bg="#000000", fg="white", pady=10, padx=30, bd=0, highlightthickness=2,highlightbackground="black", activebackground="#051729",
             activeforeground="white").pack(pady=25)
 
 
-        # recognition function
+    # recognition function
     def startRecognition():
         global img_read, img_label
-
+        # alert for no images selected
         if(img_label == None):
             messagebox.showerror("Error", "No image selected !! ")
             return
@@ -349,10 +349,11 @@ def home():
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
         face_coords = detect_faces(gray_frame)
-        
+        # errors for those images that doesn't contain face or clear face
         if (len(face_coords) == 0):
             messagebox.showerror("Error", "Image doesn't contain any face or face is not clear.")
         else:
+            # started training model
             (model, names) = train_model()
             print('Training Successful.')
             print('Detecting Faces....')
@@ -363,9 +364,10 @@ def home():
             img_size = left_frame.winfo_height() - 40
             frame = cv2.flip(frame, 1, 0)
             showImage(frame, img_size)
-
+            # starting recognition
             if (len(recognized) == 0):
                 messagebox.showerror("Oops", "No criminal recognized.")
+                # terminal message
                 print("No criminal recognized.")
                 print('Thankyou for using this project.')
                 return
@@ -380,7 +382,7 @@ def home():
         global left_frame, img_label, img_read
         for wid in right_frame.winfo_children():
             wid.destroy()
-
+        # setting filetypes
         filetype = [("images", "*.jpg *.jpeg *.png")]
         path = filedialog.askopenfilename(title="Choose a image", filetypes=filetype)
 
@@ -400,12 +402,14 @@ def home():
         
         # page for image observation
         basicPageSetup(2)
+        # heading for detect criminal page
         heading.configure(text="Detect Criminal",  highlightthickness=2,highlightbackground="white",fg="white" )
         right_frame.configure(text="Detected Criminals", highlightthickness=2,highlightbackground="white",fg="white")
 
         btn_grid = tk.Frame(left_frame, bg="#051729")
         btn_grid.pack()
-
+        
+        # added buttons with function for selecting image and recognize 
         tk.Button(btn_grid, text="Select Image", command=selectImage, font="Verdana 13 bold", padx=20, bg="#000000",
                 fg="white", pady=10, bd=0, highlightthickness=2,highlightbackground="#051729", activebackground="#051729",
                 activeforeground="white").grid(row=0, column=0, padx=25, pady=25)
@@ -413,7 +417,7 @@ def home():
             fg="white", pady=10, bd=0, highlightthickness=2,highlightbackground="#051729", activebackground="white",
             activeforeground="white").grid(row=0, column=1, padx=25, pady=25)
 
-
+    #function for write detected video's timestamps in csv file
     def videoLoop(path,model, names):
         p=path
         q=ntpath.basename(p)
@@ -482,7 +486,9 @@ def home():
         pages[4].lift()
 
         basicPageSetup(4)
+        # heading for video observation
         heading.configure(text="Video Observation", fg="white",highlightthickness=2,highlightbackground="white")
+        # column for showing the detected criminal
         right_frame.configure(text="Detected Criminals",highlightthickness=2,highlightbackground="white", fg="white")
         left_frame.configure(pady=40)
 
@@ -502,30 +508,30 @@ def home():
         pages[3].lift()
 
         basicPageSetup(3)
+        # heading for video observation page 
         heading.configure(text="Video Observation", padx=20, pady=10, fg='white', highlightthickness=2,highlightbackground="#051729")
 
         btn_grid = tk.Frame(left_frame,bg="#051729")
         btn_grid.pack()
-
+        
+        # added button for select video 
         tk.Button(btn_grid, text="Select Video", command=selectvideo, font="Verdana 13 bold", padx=20, bg="#000000",
                     fg="white", pady=10, bd=0, highlightthickness=2,highlightbackground="#051729", activebackground="#051729",
                     activeforeground="white").grid(row=0, column=0, padx=25, pady=25)
-
+        
+    # function for select video
     def selectvideo():
         global left_frame, img_label, img_read
         for wid in right_frame.winfo_children():
             wid.destroy()
-
+        # setting filetypes
         filetype = [("video", "*.mp4 *.mkv")]
         path = filedialog.askopenfilename(title="Select a video", filetypes=filetype)
         p=''
         p=path
         
         if(len(path) > 0):
-            # vid_read = cv2.imread(path)
-            # print(vid_read)
             getPage4(p)
-            # img_read = cv2.imread(path)
         else:
             messagebox.showerror("please select a video")
             img_size =  left_frame.winfo_height() - 40
@@ -551,21 +557,21 @@ def home():
             messagebox.showerror("Please select a video")
 
     ######################################## Home Page ####################################
-    
+    # heading of front page
     tk.Label(pages[0], text="Face Recognition System for Criminal Detection", fg="#ffffff", highlightbackground="white", highlightthickness=4,
         font="Helvetica 25 bold", bg="#051729", pady=10).pack(padx=50, pady=20)
 
-    
+    # added logo 
     logo = tk.PhotoImage(file = "logo1.png")
     tk.Label(pages[0], image=logo, bg="#051729").pack(side='top', padx=20, pady=30)
 
     btn_frame = tk.Frame(pages[0], bg="#051729", pady=30)
     btn_frame.pack()
-    # b0 = tk.Button(btn_frame, text="Login/Sign-Up", command=mainfunction)
+    
+    # added buttons with the functions
     b1 = Button(btn_frame, text="1. Register Criminal", command=getPage1)
     b2 = Button(btn_frame, text="2. Image Observation", command=getPage2)
     b3 = Button(btn_frame, text="3. Video Observation", command=getPage3)
-    # b0.pack()
     b1.pack()
     b2.pack()
     b3.pack()
@@ -578,9 +584,10 @@ def home():
     
 
     pages[0].lift()
+    
+    # added video in front page with once view
     video_label = Label(root)
     video_label.place(x=400, y=130)
-    # video_label.pack(padx=20,pady=20)
     # read video to display on label
     player = tkvideo("criminal.mp4", video_label,
                     loop = 1, size = (300, 200))
