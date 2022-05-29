@@ -42,6 +42,8 @@ Python has become one of the most popular programming languages in the world in 
 
 ### 3. Open-CV <img width="30" src="https://img.icons8.com/color/48/000000/opencv.png"/>
 
+OpenCV (Open Source Computer Vision Library) is an open source computer vision and machine learning software library. OpenCV was built to provide a common infrastructure for computer vision applications and to accelerate the use of machine perception in the commercial products. Being a BSD-licensed product, OpenCV makes it easy for businesses to utilize and modify the code.
+
 ## Prerequisite 
 
 1. Python version must be `3.8.10`
