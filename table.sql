@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 26, 2022 at 10:04 AM
+-- Generation Time: May 29, 2022 at 08:38 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.4
 
@@ -24,13 +24,13 @@ SET time_zone = "+00:00";
 CREATE TABLE `criminaldata` (
   `Criminal-ID` int(6) NOT NULL,
   `Address` varchar(40) NOT NULL,
-  `Phone` int(12) NOT NULL,
+  `Phone` varchar(15) NOT NULL,
   `Name` varchar(30) NOT NULL,
   `Father's Name` varchar(30) NOT NULL,
   `Gender` varchar(10) NOT NULL,
-  `DOB(yyyy-mm-dd)` date NOT NULL,
+  `DOB(yyyy-mm-dd)` varchar(10) NOT NULL,
   `Crimes Done` varchar(40) NOT NULL,
-  `Date of Arrest` date NOT NULL,
+  `Date of Arrest` varchar(10) NOT NULL,
   `Place of Arrest` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -39,17 +39,11 @@ CREATE TABLE `criminaldata` (
 --
 
 INSERT INTO `criminaldata` (`Criminal-ID`, `Address`, `Phone`, `Name`, `Father's Name`, `Gender`, `DOB(yyyy-mm-dd)`, `Crimes Done`, `Date of Arrest`, `Place of Arrest`) VALUES
-(123456, 'jaipur', 0, 'vivek rati', 'mahesh rathi', 'male', '2000-09-07', 'fraud', '2020-12-09', 'chhattisgarh'),
-(234, 'jabalpur', 0, 'jaydeep singh', 'mahendra singh', 'male', '1970-09-08', 'fraud', '2009-08-07', 'jabalpur'),
-(567432, 'delhi', 0, 'pranav verma', 'ramesh verma', 'male', '2000-05-04', 'murder', '2000-05-04', 'aagra'),
-(876594, 'jharkhand', 0, 'mehul sharma', 'mahesh sharma', 'male', '1999-09-09', 'fraud', '1999-09-09', 'odisha'),
-(1234, 'dfg', 0, 'bjk', 'mn', 'm', '1990-09-08', 'b,j', '2000-09-08', 'hv'),
-(123456, 'h', 0, 'c', 'c', 'c', '1990-08-09', 'd', '1990-08-09', 'd'),
-(89, 'gh', 0, 'nmk', ' h', 'm', '1998-09-08', 'vb', '1998-09-08', 'cgj'),
-(409087, 'delhi', 0, 'rajesh yadav', 'brijesh yadav', 'male', '1978-09-08', 'fraud', '2019-08-09', 'mumbai'),
-(4, 'g', 0, 'v', 'v', 'v', '2020-09-09', 'm', '2020-09-09', 'g'),
-(98, 'v', 0, 'c', 'c', 'c', '2020-09-09', 'f', '2020-09-09', 'f'),
-(4, 'g', 47, 'cfc', 'fre', 'm', '2020-09-09', 'm', '2020-09-09', 'v');
+(7564, 'jhansi', '324517898', 'david', 'lovely', 'male', '1978-05-03', 'theft', '2008-05-01', 'uttrakhand'),
+(8763, '', '', 'jenny', '', '', '', '', '', ''),
+(765894, 'durg', '764784598', 'mansi mishra', 'bhartendu mishra', 'female', '2002-09-04', 'fraud', '2020-09-08', 'mumbai'),
+(567894, 'mumbai', '9307685943', 'salman khan', 'mr. khan ', 'male', '2002-09-09', 'fraud', '2020-09-09', 'delhi'),
+(876546, 'america', '9301821345', 'vijay mallya', 'mr. mallya', 'male', '1978-09-08', 'fraud, loan', '2016-08-09', 'delhi');
 
 -- --------------------------------------------------------
 
@@ -58,15 +52,15 @@ INSERT INTO `criminaldata` (`Criminal-ID`, `Address`, `Phone`, `Name`, `Father's
 --
 
 CREATE TABLE `missingdata` (
-  `Report-ID` int(11) NOT NULL,
+  `Report-ID` int(6) NOT NULL,
   `Name` varchar(30) NOT NULL,
   `Father's Name` varchar(30) NOT NULL,
   `Address` varchar(50) NOT NULL,
-  `Phone` int(12) NOT NULL,
+  `Phone` varchar(15) NOT NULL,
   `Gender` varchar(10) NOT NULL,
-  `DOB` date NOT NULL,
+  `DOB` varchar(10) NOT NULL,
   `Identification` varchar(50) NOT NULL,
-  `Date of Missing` date NOT NULL,
+  `Date of Missing` varchar(10) NOT NULL,
   `Place of Missing` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -75,12 +69,11 @@ CREATE TABLE `missingdata` (
 --
 
 INSERT INTO `missingdata` (`Report-ID`, `Name`, `Father's Name`, `Address`, `Phone`, `Gender`, `DOB`, `Identification`, `Date of Missing`, `Place of Missing`) VALUES
-(1234, 'a', 'a', 'a', 0, 'a', '2002-09-07', 'a', '2002-08-09', 'a'),
-(76, 'n', 'n', 'n', 0, 'm', '1998-09-08', 'm', '1998-09-08', 'm'),
-(857, 'b', 'g', 'g', 0, 'm', '2020-09-09', 'g', '2020-09-09', 'g'),
-(908078, 'rajesh yadav', 'brijesh yadav', 'mumbai', 0, 'male', '2020-09-09', 'mole on nose', '2020-09-09', 'delhi'),
-(8749, 'h', 'h', 'h', 0, 'm', '2020-09-09', 'njk', '2020-09-09', 'fg'),
-(987896, 'dd', 'd', 'd', 987987987, 'd', '2020-09-09', 'd', '2020-09-09', 'd');
+(65474, 'anamika', '', 'delhi', '6547849320', 'female', '1979-03-06', '', '2020-09-09', 'agra'),
+(6574, 'priya ', '', '', '', '', '', '', '', ''),
+(764754, 'rajesh yadav', '--', '--', '998468647', 'm', '2020-09-08', 'mole', '2020-09-08', 'm'),
+(876589, 'salman khan', 'mr. khan', 'mumbai', '930172525', 'male', '1967-09-08', 'mole on nose', '2020-09-08', 'delhi'),
+(874, 'shahruk khan', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -102,25 +95,30 @@ CREATE TABLE `user_information` (
 --
 
 INSERT INTO `user_information` (`id`, `first_name`, `last_name`, `gender`, `username`, `password`) VALUES
-(14, 'Danish', 'Ali', '', 'masterprograming', 'Welcome@12'),
-(15, 'Mansi', 'Mishra', '', 'mansi', 'mansi0904'),
-(16, 'Margi', 'Mishra', '', 'Margi', 'margi0306'),
-(17, 'b', 'v', '', 'op', 'bh'),
-(18, 'w', 'f', '', 'b', '1234'),
-(19, 'Sakshi', 'Mishra', '', 'Sakshi', 'sakshi1907'),
-(20, 'Kunjal', 'Ramteke', '', 'Kunjal', '1234'),
-(21, 'Pranjal', 'Hinduja', '', 'pranjal', '1234'),
-(22, 'Adiba', 'Noor', '', 'adiba', '1234'),
-(23, 'a', 'a', '', 'a', 'a'),
-(24, 'munna', 'yadav', '', 'munna', '1234'),
-(25, 'Ranu', 'c', '', 'd', 'd'),
-(26, 'manu', 'bin', 'Male', 'sa', 'sa'),
-(27, 'z', 'z', 'Male', 'z', 'z'),
-(28, 'g', 'g', 'Male', 'g', 'g');
+(15, 'Mansi', 'Mishra', 'Female', 'mansi', 'mansi0904'),
+(16, 'Margi', 'Mishra', 'Female', 'Margi', 'margi0306'),
+(19, 'Sakshi', 'Mishra', 'Female', 'Sakshi', 'sakshi1907'),
+(20, 'Kunjal', 'Ramteke', 'Female', 'Kunjal', '1234'),
+(21, 'Pranjal', 'Hinduja', 'Female', 'pranjal', '1234'),
+(24, 'munna', 'yadav', 'Male', 'munna', '1234'),
+(29, 'papa', 'mishra', 'Male', 'papa', '123'),
+(32, 'Mansi', 'Mishra', 'Female', 'man', '12');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `criminaldata`
+--
+ALTER TABLE `criminaldata`
+  ADD PRIMARY KEY (`Name`);
+
+--
+-- Indexes for table `missingdata`
+--
+ALTER TABLE `missingdata`
+  ADD PRIMARY KEY (`Name`);
 
 --
 -- Indexes for table `user_information`
@@ -136,5 +134,5 @@ ALTER TABLE `user_information`
 -- AUTO_INCREMENT for table `user_information`
 --
 ALTER TABLE `user_information`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 COMMIT;
