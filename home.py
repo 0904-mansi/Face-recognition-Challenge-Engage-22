@@ -1,3 +1,4 @@
+# import modules
 import faulthandler
 import sys
 import tracemalloc 
@@ -23,7 +24,7 @@ import os
 from main_login import *
 from PIL import Image
 
-
+# define variables
 active_page = 0
 thread_event = None
 left_frame =None
@@ -38,6 +39,7 @@ slide_control_panel = None
 current_slide = -1
 
 def home():
+    # creating window for Criminal Detection Project    
     global bgg1, label, pimg1
     root = Toplevel()
     root.title("Criminal Detection Project")
@@ -52,7 +54,7 @@ def home():
         pages[i].pack(side="top", fill="both", expand=True)
         pages[i].place(x=0, y=0, relwidth=1, relheight=1)
 
-
+    # function for back     
     def goBack():
         global active_page, thread_event, webcam
 
@@ -71,6 +73,7 @@ def home():
     def basicPageSetup(pageNo):
         global left_frame, right_frame, heading
 
+        # adding back button
         back_img = ImageTk.PhotoImage(file="back.png")
         back_button = tk.Button(pages[pageNo], image=back_img, bg="#051729", bd=0, highlightthickness=2,
             highlightbackground="white",activebackground="#051729", command=goBack)
@@ -85,7 +88,8 @@ def home():
 
         left_frame = tk.Frame(content, bg="#051729")
         left_frame.grid(row=0, column=0, sticky="nsew")
-
+        
+        # created a column where detected criminals will be listed
         right_frame = tk.LabelFrame(content, text="Detected Criminals", fg="white", bg="#051729", font="Verdana 20 bold", bd=4,
                     foreground="white",             labelanchor="n")
         right_frame.grid(row=0, column=1, sticky="nsew", padx=20, pady=20)
@@ -96,8 +100,8 @@ def home():
 
 
     def showImage(frame, img_size):
+        # function for converting image in the form of array
         global img_label, left_frame
-        faulthandler.enable()
         img = cv2.resize(frame, (img_size, img_size))
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         img = Image.fromarray(img)
@@ -125,11 +129,11 @@ def home():
 
             slide_caption.configure(text = "Image {} of {}".format(current_slide+1, len(img_list)), fg = "white")
 
-
+    # function for selecting multiple pages
     def selectMultiImage(opt_menu, menu_var):
         global img_list, current_slide, slide_caption, slide_control_panel
-
-        filetype = [("images", "*.jpg *.jpeg *.png")]
+        # file type must be in png format
+        filetype = [("images", "*.png")]
         path_list = filedialog.askopenfilenames(title="Choose atleast 5 images", filetypes=filetype)
 
         if(len(path_list) < 5):
@@ -163,7 +167,7 @@ def home():
 
             slide_control_panel = tk.Frame(left_frame, bg="#051729", pady=20)
             slide_control_panel.pack()
-
+            # adding buttons for switch over to images
             back_img = tk.PhotoImage(file="previous.png")
             next_img = tk.PhotoImage(file="next.png")
 
@@ -196,7 +200,8 @@ def home():
             # print(i)
             val = entry[1].get()
             # print(val)
-
+            
+            # error for required field missing
             if (len(val) == 0 and required[i] == 1):
                 messagebox.showerror("Field Error", "Required field missing :\n\n%s" % (entry[0]))
                 return
