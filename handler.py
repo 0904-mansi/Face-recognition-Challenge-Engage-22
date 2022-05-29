@@ -10,7 +10,7 @@ def insertData(data):
     "Place of Arrest"]
     # data of criminal to be written in csv file
     x = [data['Name'], data["Father's Name"], data['Gender'], data['DOB(yyyy-mm-dd)'],
-     data['Crimes Done'], data['Date of Arrest(yyyy-mm-dd)'], data["Place of Arrest"] ]
+         data['Crimes Done'], data['Date of Arrest(yyyy-mm-dd)'], data["Place of Arrest"] ]
     filen = "Criminal.csv"
     with open(filen, 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
