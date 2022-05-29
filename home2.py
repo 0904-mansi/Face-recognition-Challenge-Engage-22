@@ -1,4 +1,4 @@
-# import mysql.connector
+# import required modules
 import tracemalloc
 from tkinter import *
 from tkvideo import tkvideo
@@ -18,9 +18,9 @@ import csv
 import numpy as np
 import ntpath
 import os
-# from main_login import *
 from PIL import Image 
 
+#define variables
 tracemalloc.start()
 active_page = 0
 thread_event = None
@@ -37,15 +37,11 @@ current_slide = -1
 
 
 def home2():
+    # creating window for Finding Missing People Project
     root = Toplevel()
     root.geometry("1100x1300")    
-    root.title(" Finding Missing People Project")
-    video_label = Label(root)
-    video_label.pack(padx=10,pady=10)
-    # read video to display on label
-    player = tkvideo("Missing.mp4", video_label,
-                    loop = 6, size = (400, 200))
-    player.play()
+    root.title("Finding Missing People Project")
+    
     
     # create Pages
     pages = []
@@ -54,7 +50,7 @@ def home2():
         pages[i].pack(side="top", fill="both", expand=True)
         pages[i].place(x=0, y=0, relwidth=1, relheight=1)
 
-
+    # function for back
     def goBack():
         global active_page, thread_event, webcam
 
@@ -72,7 +68,7 @@ def home2():
 
     def basicPageSetup(pageNo):
         global left_frame, right_frame, heading
-
+        # adding back button to move back to home page
         back_img = ImageTk.PhotoImage(file="back.png")
         back_button = tk.Button(pages[pageNo], image=back_img, bg="#051729", bd=0, highlightthickness=2,
             activebackground="#051729",highlightbackground="white", command=goBack)
@@ -96,10 +92,10 @@ def home2():
         content.grid_columnconfigure(1, weight=1, uniform="group1")
         content.grid_rowconfigure(0, weight=1)
 
-
+   
     def showImage(frame, img_size):
         global img_label, left_frame
-
+        # coverting image into array
         img = cv2.resize(frame, (img_size, img_size))
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         img = Image.fromarray(img)
@@ -112,7 +108,7 @@ def home2():
             img_label.configure(image=img)
             img_label.image = img
 
-
+    # function for switch over to selected images
     def getNewSlide(control):
         global img_list, current_slide
 
@@ -127,10 +123,11 @@ def home2():
 
             slide_caption.configure(text = "Image {} of {}".format(current_slide+1, len(img_list)), fg = "white")
 
-
+    # function for selecting multiple images
     def selectMultiImage(opt_menu, menu_var):
         global img_list, current_slide, slide_caption, slide_control_panel
-
+        
+        # filetype settings
         filetype = [("images", "*.jpg *.jpeg *.png")]
         path_list = filedialog.askopenfilenames(title="Choose atleast 5 images", filetypes=filetype)
 
@@ -165,7 +162,8 @@ def home2():
 
             slide_control_panel = tk.Frame(left_frame, bg="#051729", pady=20)
             slide_control_panel.pack()
-
+            
+            # added buttons for switching over images
             back_img = tk.PhotoImage(file="previous.png")
             next_img = tk.PhotoImage(file="next.png")
 
@@ -183,7 +181,7 @@ def home2():
             next_slide.image = next_img
             next_slide.grid(row=0, column=2, padx=60)
 
-
+    # function for registeration
     def register(entries, required, menu_var):
         global img_list
 
@@ -231,6 +229,7 @@ def home2():
             insertData(entry_data)
             rowId=1
             if(rowId >= 0):
+                # confirmation message for terminal and project
                 messagebox.showinfo("Success", "Person Registered Successfully.")
                 print("New Missing Person Registered.")
                 shutil.move(path, os.path.join('face_samples', entry_data["Name"]))
@@ -262,18 +261,20 @@ def home2():
         pages[1].lift()
 
         basicPageSetup(1)
+        # added title for Register Missing People page
         heading.configure(text="Register Missing People here",fg="white", highlightthickness=2, highlightbackground="white",bg="#051729")
         right_frame.configure(text="Enter Details", fg="white", bg="#051729")
 
         btn_grid = tk.Frame(left_frame, bg="#051729")
         btn_grid.pack()
 
+        # added buttons for select images
         tk.Button(btn_grid, text="Select Images", command=lambda: selectMultiImage(opt_menu, menu_var), font="Helvetica 13 bold", bg="#000000",
             fg="white", pady=10, bd=0, highlightthickness=2,highlightbackground="#051729", activebackground="#000000",
             activeforeground="white").grid(row=0, column=0, padx=25, pady=25)
 
 
-        # Creating Scrollable Frame
+        # Creating Scrollable Frame using canvas
         canvas = tk.Canvas(right_frame, bg="#051729", highlightthickness=0)
         canvas.pack(side="left", fill="both", expand="true", padx=30)
         scrollbar = tk.Scrollbar(right_frame, command=canvas.yview, width=20, troughcolor="#051729", bd=0,
@@ -291,7 +292,8 @@ def home2():
         # Adding Input Fields
         input_fields = ("Report-ID","Name", "Father's Name","Address","Phone", "Gender", "DOB(yyyy-mm-dd)", "Identification","Date of Missing(yyyy-mm-dd)","Place of Missing", "Profile Image")
         ip_len = len(input_fields)
-        required = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        # making fields required
+        required = [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1]
 
         entries = []
         for i, field in enumerate(input_fields):
@@ -320,19 +322,19 @@ def home2():
                 opt_menu.configure(font="Helvetica 13", bg="#000000", fg="white", bd=0, highlightthickness=0, activebackground="#051729")
                 menu = opt_menu.nametowidget(opt_menu.menuname)
                 menu.configure(font="Helvetica 13", bg="white", activebackground="#000000", bd=0)
-
-        # print(entries)
-
+                
+        # created button for register person
         tk.Button(scroll_frame, text="Register", command=lambda: register(entries, required, menu_var), font="Helvetica 13 bold",
             bg="#000000", fg="white", pady=10, padx=30, bd=0, highlightthickness=2,highlightbackground="black", activebackground="#051729",
             activeforeground="white").pack(pady=25)
 
 
-
+    # function for recognition
     def startRecognition():
         global img_read, img_label
 
         if(img_label == None):
+            # alert for no image selected
             messagebox.showerror("Error", "No image selected !! ")
             return
 
@@ -345,20 +347,22 @@ def home2():
 
         face_coords = detect_faces(gray_frame)
 
+        # checking for if image contains face is clear or not
         if (len(face_coords) == 0):
             messagebox.showerror("Error", "Image doesn't contain any face or face is not clear.")
         else:
+            # start training model
             (model, names) = train_model()
             print('Training Successful.')
             print('Detecting Faces....')
 
-            print('Thankyou for using this project.')
             (frame, recognized) = recognize_face(model, frame, gray_frame, face_coords, names)
 
             img_size = left_frame.winfo_height() - 40
             frame = cv2.flip(frame, 1, 0)
             showImage(frame, img_size)
-
+               
+            # error message if no person is detected
             if (len(recognized) == 0):
                 messagebox.showerror("Oops", "No missing person recognized.")
                 print("No missing person recognized")
@@ -369,12 +373,12 @@ def home2():
                                                 font="Helvetica 13 bold", pady=20))
                 crims_found_labels[i].pack(fill="x", padx=20, pady=10)
             
-
+    # function for select image
     def selectImage():
         global left_frame, img_label, img_read
         for wid in right_frame.winfo_children():
             wid.destroy()
-
+        # setting filetype
         filetype = [("images", "*.jpg *.jpeg *.png")]
         path = filedialog.askopenfilename(title="Choose a image", filetypes=filetype)
 
@@ -383,11 +387,7 @@ def home2():
 
             img_size =  left_frame.winfo_height() - 40
             showImage(img_read, img_size)
-    #---------------------------------------------------------------Login Function --------------------------------------
-
-
-    #-------------------------------------------------------------------------- End Login Window ---------------------------------------------------
-
+   
 
     ## Detection Page ##
     def getPage2():
@@ -397,12 +397,14 @@ def home2():
         pages[2].lift()
 
         basicPageSetup(2)
+        # heading for Image observation project
         heading.configure(text="Detect Missing People",  highlightthickness=2,highlightbackground="white",fg="white" )
         right_frame.configure(text="Detected Person", highlightthickness=2,highlightbackground="white",fg="white")
 
         btn_grid = tk.Frame(left_frame, bg="#051729")
         btn_grid.pack()
-
+        
+        # added button for selet image and recognize it
         tk.Button(btn_grid, text="Select Image", command=selectImage, font="Helvetica 13 bold", padx=20, bg="#000000",
                 fg="white", pady=10, bd=0, highlightthickness=2,highlightbackground="black", activebackground="#051729",
                 activeforeground="black").grid(row=0, column=0, padx=25, pady=25)
@@ -410,12 +412,11 @@ def home2():
             fg="white", pady=10, bd=0, highlightthickness=2,highlightbackground="black", activebackground="#051729",
             activeforeground="white").grid(row=0, column=1, padx=25, pady=25)
 
-
+    # function that notes the timestamps of detected person from video in csv file
     def videoLoop(path,model, names):
         p=path
         q=ntpath.basename(p)
         filenam, file_extension = os.path.splitext(q)
-        # print(filename)
         global thread_event, left_frame, webcam, img_label
         start=time.time()
         webcam = cv2.VideoCapture(p)
@@ -474,21 +475,16 @@ def home2():
 
                         showImage(frame, img_size)
 
-        except RuntimeError:
-            print("[INFO]Caught Runtime Error")
-        except tk.TclError:
-            print("[INFO]Caught Tcl Error")
-
 
     # video Observation Page ##
     def getPage4(path):
         p=path
-        # print(p)
         global active_page, video_loop, left_frame, right_frame, thread_event, heading
         active_page = 4
         pages[4].lift()
 
         basicPageSetup(4)
+        # heading for video observation page
         heading.configure(text="Video Observation", fg="white", highlightthickness=2,highlightbackground="white")
         right_frame.configure(text="Detected Person",highlightthickness=2,highlightbackground="white", fg="white")
         left_frame.configure(pady=40)
@@ -514,42 +510,39 @@ def home2():
         btn_grid = tk.Frame(left_frame,bg="#051729")
         btn_grid.pack()
 
+        # button for select video
         tk.Button(btn_grid, text="Select Video", command=selectvideo, font="Helvetica 13 bold", padx=20, bg="#000000",
                     fg="white", pady=10, bd=0, highlightthickness=2,highlightbackground="#051729", 
                     ).grid(row=0, column=0, padx=25, pady=25)
-
+    
+    # function for selecting videos
     def selectvideo():
         global left_frame, img_label, img_read
         for wid in right_frame.winfo_children():
             wid.destroy()
-
+        # setting the file types
         filetype = [("video", "*.mp4 *.mkv")]
         path = filedialog.askopenfilename(title="Select a video", filetypes=filetype)
         p=''
         p=path
         
         if(len(path) > 0):
-            # vid_read = cv2.imread(path)
-            # print(vid_read)
             getPage4(p)
-            # img_read = cv2.imread(path)
+           
 
 
     ######################################## Home Page ####################################
-   
+   # heading for home page
     tk.Label(pages[0], text="Face Recognition System for Finding Missing People", fg="#ffffff", highlightbackground="white", highlightthickness=4,
         font="Helvetica 25 bold", bg="#051729", pady=10).pack(padx=20, pady=20)
-
+    # logo for home page
     logo = tk.PhotoImage(file = "logo.png")
     tk.Label(pages[0], image=logo, bg="#051729").pack(side='top', padx=20, pady=30)
-    
-    # read video to display on label
-    
     
     btn_frame = tk.Frame(pages[0], bg="#051729", pady=30, )
     btn_frame.pack()
 
-    
+    # added buttons for Register People, Image Observation, Video Observation
     b1 = tk.Button(btn_frame, text="1. Register People", command=getPage1)
     b2 = tk.Button(btn_frame, text="2. Image Observation", command=getPage2)
     b3 = tk.Button(btn_frame, text="3. Video Observation", command=getPage3)
@@ -564,6 +557,8 @@ def home2():
     
 
     pages[0].lift()
+    
+    # added video in home page with set view once
     video_label = Label(root)
     video_label.place(x=400, y=130)
     player = tkvideo("Missing.mp4", video_label,
