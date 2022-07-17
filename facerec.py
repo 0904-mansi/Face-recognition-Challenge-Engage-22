@@ -76,6 +76,6 @@ def recognize_face(model, frame, gray_frame, face_coords, names):
         elif (confidence >= 95):
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
-    return (frame, recognized)
+    return (frame, recognized) 
 
 train_model()
