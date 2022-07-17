@@ -5,14 +5,17 @@ import cv2
 def detect(path):
 #  using haarcascade_frontalface_default.xml file for face-detection
     facedetect = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-    #cam = cv2.VideoCapture(0)
     cam = cv2.VideoCapture(path)
     sampleNum = 0
 
 
     while(True):
         ret,img = cam.read()
+        # convert from RGB to grayscale
         gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+#        The detectMultiScale method is the one that will perform the detection for us. It takes the following parameters: scaleFactor & minNeighbors
+#        The detectMultiScale method returns a numpy array with dimensions and positions of the rectangles containing the faces.
+
         faces = facedetect.detectMultiScale(gray,1.3,5)
 
         for(x,y,w,h) in faces:
