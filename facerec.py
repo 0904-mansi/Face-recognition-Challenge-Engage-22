@@ -6,7 +6,7 @@ size = 2
 #using face_cascade.xml file for recognition
 haar_cascade = cv2.CascadeClassifier('face_cascade.xml')
 
-# Part 1: Create fisherRecognizer
+# Part 1: using fisherRecognizer because fisherface takes less space also it has lower error rate comparison to eigenface
 def train_model():
     model = cv2.face.LBPHFaceRecognizer_create()
     fn_dir = 'face_samples'
