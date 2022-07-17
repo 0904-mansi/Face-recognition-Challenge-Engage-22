@@ -17,11 +17,12 @@ def detect(path):
 #        The detectMultiScale method returns a numpy array with dimensions and positions of the rectangles containing the faces.
 
         faces = facedetect.detectMultiScale(gray,1.3,5)
-
+#       x,y — position of the top left corner of the rectangle and w, h — width and height of the rectangle
         for(x,y,w,h) in faces:
             sampleNum+=1
             # storing image into dataset folder
             cv2.imwrite('dataset/'+str(sampleNum)+'.jpg',gray[y:y+h,x:x+w])
+             # draw a rectangle with these dimensions in green color (0, 255, 0) (BGR color code) with the border thickness = 2
             cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
             cv2.waitKey(1)
         cv2.imshow('face',img)
@@ -29,5 +30,5 @@ def detect(path):
         if(sampleNum>100):
             break
 
-    cam.release()
+    # closing window automatically
     cv2.destroyAllWindows()
