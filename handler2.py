@@ -14,6 +14,7 @@ def insertData(data):
     filen = "Missing.csv"
     with open(filen, 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
+          # writing the information into csv file
         csvwriter.writerow(field)
         csvwriter.writerow(x)
         
@@ -27,7 +28,7 @@ def insertData(data):
     cursor = db.cursor()
     print("Opened Database")
     print("Database Connected successfully")
-    # query for insert data into table missingdata
+    # query for insert data into table missingdata 
     query = "INSERT INTO missingdata VALUES('%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % \
             (data["Report-ID"], data["Name"], data["Father's Name"], data["Address"],
              data["Phone"], data["Gender"], data["DOB(yyyy-mm-dd)"],
@@ -36,11 +37,13 @@ def insertData(data):
     
     # executing the query
     cursor.execute(query)
+     # saving the changes into database
     db.commit()
     rowId = cursor.lastrowid
     #confirmation message in terminal
     print("data stored on new row in the database")
     print("Record Created")
+     # closing the database
     db.close()
     return rowId
 
