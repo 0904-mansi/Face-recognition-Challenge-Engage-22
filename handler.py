@@ -37,12 +37,14 @@ def insertData(data):
 
     # executing the query 
     cursor.execute(query)
+    # to save changes into database
     db.commit()
     rowId = cursor.lastrowid
     
-    #confirmation message in terminal
+    #c onfirmation message in terminal
     print("data stored on new row in the database")
     print("Record Created")
+    # close the database
     db.close()
     return rowId
 
