@@ -40,11 +40,11 @@ def train_model():
     return (model, names)
 
 
-# Part 2: Use fisherRecognizer on camera stream
+# Part 2: Using fisherRecognizer 
 def detect_faces(gray_frame):
     global size, haar_cascade
 
-    # Resize to speed up detection (optinal, change size above)
+    # Resize to speed up detection (optional, change size above)
     mini_frame = cv2.resize(gray_frame, (int(gray_frame.shape[1] / size), int(gray_frame.shape[0] / size)))
 
     # Detect faces and loop through each one
@@ -54,6 +54,7 @@ def detect_faces(gray_frame):
 
 def recognize_face(model, frame, gray_frame, face_coords, names):
     (img_width, img_height) = (112, 92)
+    #defining two list
     recognized = []
     recog_names = []
 
@@ -70,11 +71,13 @@ def recognize_face(model, frame, gray_frame, face_coords, names):
 
         # print(prediction, confidence)
         if (confidence<95 and names[prediction] not in recog_names):
-            cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 2)
+            # if confidence<95 then draw a green rectangle
+            cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
             recog_names.append(names[prediction])
             recognized.append((names[prediction].capitalize(), confidence))
+        # if confidence>=95 then draw a red rectangle with name
         elif (confidence >= 95):
-            cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+            cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
 
     return (frame, recognized) 
 
