@@ -49,6 +49,11 @@ Python is a computer programming language often used to build websites and softw
 
 OpenCV (Open Source Computer Vision Library) is an open source computer vision and machine learning software library. OpenCV was built to provide a common infrastructure for computer vision applications and to accelerate the use of machine perception in the commercial products. Being a BSD-licensed product, OpenCV makes it easy for businesses to utilize and modify the code.
 
+### 4. MySQL <img width="30" src = "https://user-images.githubusercontent.com/81081105/179774941-89b16b8c-0a21-4782-96b8-c247f158757d.png"/>
+
+
+Python MySQL Connector is a Python driver that helps to integrate Python and MySQL. This Python MySQL library allows the conversion between Python and MySQL data types. MySQL Connector API is implemented using pure Python and does not require any third-party library.
+
 ## Prerequisite 🖥
 
 1. Python version must be `3.8.10`
