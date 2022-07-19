@@ -5,10 +5,13 @@ import argparse
 import pickle
 import cv2
 import os
+
 imagepaths=[]
+
 for name in glob.glob("dataset/*"):
     imagepaths.append(name)
 
+# vectorizing the features of video frames & serializing it in a enc.picke file (a binary format file)
 data=[]
 for (i,img) in enumerate(imagepaths):
     print("img {}/{} ".format(i+1,len(imagepaths)))
@@ -20,5 +23,6 @@ for (i,img) in enumerate(imagepaths):
     data.extend(d)
 
 f=open("enc.picke","wb")
+# dump() function store the object data to the file. pickle
 f.write(pickle.dumps(data))
 f.close()
