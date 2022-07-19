@@ -1,4 +1,5 @@
 
+# DBSCAN - Density-Based Spatial Clustering of Applications with Noise. Finds core samples of high density and expands clusters from them.
 import pickle
 import cv2
 import numpy as np
@@ -13,8 +14,10 @@ data = pickle.loads(open("enc.picke", "rb").read())
 data=np.array(data)
 
 encodings=[d['encodings'] for d in data]
-
-clt = DBSCAN(metric="euclidean", n_jobs=-1)
+#Perform DBSCAN clustering from vector array or distance matrix.
+# metric to calculating distance between instances in a feature array.
+clt = DBSCAN(metric="euclidean", n_jobs=-1) # Euclidean Distance represents the shortest distance between two points  
+# use this distance metric to measure the similarity between observations or points
 clt.fit(encodings)
 
 clt.labels_
@@ -29,7 +32,9 @@ print("unique faces: {}".format(numUniqueFaces))
 
 for labelID in tqdm(labelIDs):
     idxs = np.where(clt.labels_ == labelID)[0]
+#     Generates a random sample from 1-D array
     idxs = np.random.choice(idxs, size=min(25, len(idxs)),replace=False)
+# storing faces to face_samples/unique_name dir by indexing 
     faces = []
     path=r'face_samples/id'+str(labelID)
     if not os.path.exists(path):
