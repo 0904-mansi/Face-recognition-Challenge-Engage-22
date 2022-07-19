@@ -7,8 +7,9 @@ from imutils import build_montages
 import os
 from tqdm import tqdm
 
-
+#read data from enc.picke file
 data = pickle.loads(open("enc.picke", "rb").read())
+#creating array from that data
 data=np.array(data)
 
 encodings=[d['encodings'] for d in data]
@@ -27,7 +28,6 @@ print("unique faces: {}".format(numUniqueFaces))
 
 
 for labelID in tqdm(labelIDs):
-    #print(labelID)
     idxs = np.where(clt.labels_ == labelID)[0]
     idxs = np.random.choice(idxs, size=min(25, len(idxs)),replace=False)
     faces = []
@@ -36,15 +36,5 @@ for labelID in tqdm(labelIDs):
         os.makedirs(path)
     for i in idxs:
         img=cv2.imread(data[i]["imgpath"])
-        #(top, right, bottom, left) = data[i]["box"]
-        #face = img[top:bottom, left:right]
-        #face = cv2.resize(face, (96, 96))
-        #faces.append(img)
         cv2.imwrite(path+"/"+str(i)+".jpeg",img)
     
-    
-#     montage = build_montages(faces, (96, 96), (5, 5))[0]
-#     title = "Face ID #{}".format(labelID)
-#     title = "Unknown Faces" if labelID == -1 else title
-#     cv2.imshow(title, montage)
-#     cv2.waitKey(0)
