@@ -8,6 +8,7 @@ def registerPerson(img, path, img_num):
     file_num = 2*img_num - 1
 
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+#     calling detect_face function for image after converting it to grayscale
     faces = detect_faces(gray)
 
     if(len(faces) > 0):
@@ -20,17 +21,17 @@ def registerPerson(img, path, img_num):
         face = cv2.resize(face, (im_width, im_height))
 
         print("Saving training sample " + str(img_num)+".1")
-        # Save image file
+        # Save image file in face sample directory
         cv2.imwrite('%s/%s.png' % (path, file_num), face)
         file_num += 1
 
-        # Save flipped image
+        # Saveing flipped image in face sample directory
         print("Saving training sample " + str(img_num)+".2")
         face = cv2.flip(face, 1, 0)
         cv2.imwrite('%s/%s.png' % (path, file_num), face)
 
     else:
-        # No face present
+        # No face present return error
         print("img %d : Face is not present" % (img_num))
         return img_num
 
