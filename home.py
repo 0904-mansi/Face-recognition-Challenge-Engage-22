@@ -69,7 +69,7 @@ def home():
         active_page = 0
 
 
-    # window of tkinter
+    # basic page setup for all window of tkinter
     def basicPageSetup(pageNo):
         global left_frame, right_frame, heading
 
@@ -106,6 +106,7 @@ def home():
         img = cv2.resize(frame, (img_size, img_size))
         # converting image into BGR2RGB
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+         # creating array
         img = Image.fromarray(img)
         img = ImageTk.PhotoImage(img)
         if (img_label == None):
@@ -141,7 +142,7 @@ def home():
         # file type must be in png format
         filetype = [("images", "*.png")]
         path_list = filedialog.askopenfilenames(title="Choose atleast 5 images", filetypes=filetype)
-        #error for selecting 5 images
+        # error for selecting 5 images
         if(len(path_list) < 5):
             messagebox.showerror("Error", "Choose atleast 5 images.")
         else:
@@ -159,7 +160,7 @@ def home():
             # Creating choices for profile pic menu
             menu_var.set("")
             opt_menu['menu'].delete(0, 'end')
-
+            # choose any one image for profile pic
             for i in range(len(img_list)):
                 ch = "Image " + str(i+1)
                 opt_menu['menu'].add_command(label=ch, command= tk._setit(menu_var, ch))
@@ -221,9 +222,9 @@ def home():
 
         no_face = []
         for i, img in enumerate(img_list):
-            # Storing Images in directory
+            # adding registered person in no_face list
             id = registerCriminal(img, path, i + 1)
-            if(id != None):
+                if(id != None):
                 no_face.append(id)
 
         # check if any image doesn't contain face
@@ -251,9 +252,9 @@ def home():
 
 
     ## update scrollregion when all widgets are in canvas
-    def on_configure(event, canvas, win):
-        canvas.configure(scrollregion=canvas.bbox('all'))
-        canvas.itemconfig(win, width=event.width)
+#     def on_configure(event, canvas, win):
+#         canvas.configure(scrollregion=canvas.bbox('all'))
+#         canvas.itemconfig(win, width=event.width)
 
     ## Register Page ##
     def getPage1():
@@ -342,7 +343,7 @@ def home():
         crims_found_labels = []
         for wid in right_frame.winfo_children():
             wid.destroy()
-#         flipping image for detecting
+        #  flipping image for detecting
         frame = cv2.flip(img_read, 1, 0)
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
@@ -397,7 +398,7 @@ def home():
         global active_page, left_frame, right_frame, img_label, heading
         img_label = None
         active_page = 2
-#    display page 2
+        # display page 2
         pages[2].lift()
         basicPageSetup(2)
         # heading for detect criminal page
@@ -513,7 +514,7 @@ def home():
         left_frame.configure(pady=40)
         btn_grid = tk.Frame(right_frame,bg="#051729")
         btn_grid.pack()
-        # training model
+        # training model (facerec file)
         (model, names) = train_model()
         print('Training Successful. Detecting Faces')
 
@@ -541,7 +542,7 @@ def home():
 #             faulthandler.enable()
 #             showImage(img_read, img_size)
 
-
+    # function for selecting video
     def selectvideo1():
         global left_frame, img_label, img_read
         for wid in right_frame.winfo_children():
@@ -590,7 +591,6 @@ def home():
     # added video in front page with once view
     video_label = Label(root)
     video_label.place(x=400, y=130)
-    # read video to display on label
     player = tkvideo("criminal.mp4", video_label,
                     loop = 1, size = (300, 200))
     player.play()
