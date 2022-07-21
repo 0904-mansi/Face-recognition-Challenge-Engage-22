@@ -19,9 +19,11 @@ import time
 import csv
 import pymysql
 import numpy as np
+# provides os.path functionality on Windows platforms. 
 import ntpath
 import os
 from main_login import *
+#basic image processing functionality like image resizing, rotation and transformation.
 from PIL import Image
 
 # define variables
@@ -44,24 +46,22 @@ def home():
     root = Toplevel()
     root.title("Criminal Detection Project")
     root.geometry("1100x1300")    
-    # root.configure(bg='#ffffff')
     
     
     # create Pages
     pages = []
-    for i in range(5):
+    for i in range(4):
         pages.append(tk.Frame(root, bg="#051729"))
         pages[i].pack(side="top", fill="both", expand=True)
         pages[i].place(x=0, y=0, relwidth=1, relheight=1)
 
     # function for back     
     def goBack():
-        global active_page, thread_event, webcam
+        global active_page, thread_event
 
         if (active_page==4 and not thread_event.is_set()):
             thread_event.set()
-            webcam.release()
-
+        # get the list of all the child widgets and destroy it when back button is pressed
         for widget in pages[active_page].winfo_children():
             widget.destroy()
 
@@ -69,7 +69,7 @@ def home():
         active_page = 0
 
 
-
+    # window of tkinter
     def basicPageSetup(pageNo):
         global left_frame, right_frame, heading
 
@@ -78,6 +78,7 @@ def home():
         back_button = tk.Button(pages[pageNo], image=back_img, bg="#051729", bd=0, highlightthickness=2,
             highlightbackground="white",activebackground="#051729", command=goBack)
         back_button.image = back_img
+        # placing the button
         back_button.place(x=10, y=10)
 
         heading = tk.Label(pages[pageNo], fg="white", bg="#051729", font="Verdana 20 bold", pady=10)
@@ -91,9 +92,9 @@ def home():
         
         # created a column where detected criminals will be listed
         right_frame = tk.LabelFrame(content, text="Detected Criminals", fg="white", bg="#051729", font="Verdana 20 bold", bd=4,
-                    foreground="white",             labelanchor="n")
+                    foreground="white", labelanchor="n")# labelanchor="n" is for string label
         right_frame.grid(row=0, column=1, sticky="nsew", padx=20, pady=20)
-
+        # creating column where result will be displayed
         content.grid_columnconfigure(0, weight=1, uniform="group1")
         content.grid_columnconfigure(1, weight=1, uniform="group1")
         content.grid_rowconfigure(0, weight=1)
@@ -103,6 +104,7 @@ def home():
         # function for converting image in the form of array
         global img_label, left_frame
         img = cv2.resize(frame, (img_size, img_size))
+        # converting image into BGR2RGB
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         img = Image.fromarray(img)
         img = ImageTk.PhotoImage(img)
@@ -114,19 +116,23 @@ def home():
             img_label.configure(image=img)
             img_label.image = img
 
-
+            
+    # function for switching over to images that selected for registering a person
     def getNewSlide(control):
         global img_list, current_slide
 
         if(len(img_list) > 1):
             if(control == "prev"):
+              # math formula is applied
                 current_slide = (current_slide-1) % len(img_list)
+                  # 3 = 2 % 5 = 2
             else:
                 current_slide = (current_slide+1) % len(img_list)
 
             img_size = left_frame.winfo_height() - 200
+            
             showImage(img_list[current_slide], img_size)
-
+            # caption
             slide_caption.configure(text = "Image {} of {}".format(current_slide+1, len(img_list)), fg = "white")
 
     # function for selecting multiple pages
