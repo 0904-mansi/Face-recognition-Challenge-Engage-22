@@ -20,11 +20,11 @@ def registerCriminal(img, path, img_num):
         face = cv2.resize(face, (im_width, im_height))
 
         print("Saving training sample " + str(img_num)+".1")
-        # Save image file
+        # Save image file in face sample directory
         cv2.imwrite('%s/%s.png' % (path, file_num), face)
         file_num += 1
 
-        # Save flipped image
+        # Saving flipped image in face sample directory
         print("Saving training sample " + str(img_num)+".2")
         face = cv2.flip(face, 1, 0)
         cv2.imwrite('%s/%s.png' % (path, file_num), face)
