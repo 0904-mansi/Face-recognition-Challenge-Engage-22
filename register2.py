@@ -1,16 +1,16 @@
 # register.py
 import cv2
 from facerec2 import detect_faces
-
+# function for registering a person
 def registerPerson(img, path, img_num):
     size = 2
     (im_width, im_height) = (112, 92)
     file_num = 2*img_num - 1
 
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-#     calling detect_face function for image after converting it to grayscale
+#   calling detect_face function for image after converting it to grayscale
     faces = detect_faces(gray)
-
+#   multiple face can also be detected
     if(len(faces) > 0):
         # Taking the largest face detected
         faces = sorted(faces, key=lambda x: x[3], reverse=True)  # sort based on height of image
