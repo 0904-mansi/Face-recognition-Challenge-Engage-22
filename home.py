@@ -80,10 +80,10 @@ def home():
 
         heading = tk.Label(pages[pageNo], fg="white", bg="#051729", font="Verdana 20 bold", pady=10)
         heading.pack()
-
+        # Tkinter Frame widget is used to organize the group of widgets. It acts like a container which can be used to hold the other widgets.
         content = tk.Frame(pages[pageNo], bg="#051729", pady=20)
         content.pack(expand="true", fill="both")
-
+        
         left_frame = tk.Frame(content, bg="#051729")
         left_frame.grid(row=0, column=0, sticky="nsew")
         
@@ -277,6 +277,8 @@ def home():
 
 
         # Creating Scrollable Frame using canvas for registering details
+        # The Canvas is a rectangular area intended for drawing pictures or other complex layouts. 
+        # You can place graphics, text, widgets or frames on a Canvas.
         canvas = tk.Canvas(right_frame, bg="#051729", highlightthickness=0)
         canvas.pack(side="left", fill="both", expand="true", padx=30)
         scrollbar = tk.Scrollbar(right_frame, command=canvas.yview, width=20, troughcolor="#051729", bd=0,
@@ -309,7 +311,7 @@ def home():
             if(required[i] == 1):
                 label.tag_configure("star", foreground="red", font="Verdana 13 bold")
                 label.insert("end", "  *", "star")
-            label.configure(state="disabled")
+            
 
             if(i != ip_len-1):
                 ent = tk.Entry(row, font="Verdana 13", selectbackground="#000000")
@@ -323,7 +325,7 @@ def home():
                 opt_menu.configure(font="Verdana 13", bg="#000000", fg="white", bd=0, highlightthickness=0, activebackground="#051729")
                 menu = opt_menu.nametowidget(opt_menu.menuname)
                 menu.configure(font="Verdana 13", bg="white", activebackground="#000000", bd=0)
-        # adding register button
+        # adding register button and calling register function from register.py 
         tk.Button(scroll_frame, text="Register", command=lambda: register(entries, required, menu_var), font="Verdana 13 bold",
             bg="#000000", fg="white", pady=10, padx=30, bd=0, highlightthickness=2,highlightbackground="black", activebackground="#051729",
             activeforeground="white").pack(pady=25)
@@ -420,7 +422,7 @@ def home():
         filenam, file_extension = os.path.splitext(q)
         global thread_event, left_frame, webcam, img_label
         start=time.time()
-        webcam = cv2.VideoCapture(p)
+#       webcam = cv2.VideoCapture(p)
         old_recognized = []
         crims_found_labels = []
         times = []
@@ -549,7 +551,7 @@ def home():
         path = filedialog.askopenfilename(title="Choose a video", filetypes=filetype)
         p=''
         p=path
-        faulthandler.enable()
+#         faulthandler.enable()
         if(len(path) > 0):
             # vid_read = cv2.imread(path)
             # print(vid_read)
