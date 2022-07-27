@@ -57,10 +57,7 @@ def home():
 
     # function for back     
     def goBack():
-        global active_page, thread_event
-
-        if (active_page==4 and not thread_event.is_set()):
-            thread_event.set()
+        global active_page
         # get the list of all the child widgets and destroy it when back button is pressed
         for widget in pages[active_page].winfo_children():
             widget.destroy()
@@ -101,14 +98,14 @@ def home():
 
 
     def showImage(frame, img_size):
-        # function for converting image in the form of array
         global img_label, left_frame
         img = cv2.resize(frame, (img_size, img_size))
-        # converting image into BGR2RGB
+        # converting image into rgb format
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
          # creating array
         img = Image.fromarray(img)
         img = ImageTk.PhotoImage(img)
+        # placing image as label in left frame
         if (img_label == None):
             img_label = tk.Label(left_frame, image=img, bg="#051729")
             img_label.image = img
