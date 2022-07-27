@@ -17,7 +17,7 @@ def registerPerson(img, path, img_num):
 #     Taking the largest face detected
         face_i = faces[0]
         (x, y, w, h) = [v * size for v in face_i]
-
+# converting RGB to gray Because it is a one layer image from 0-255 whereas the RGB have three different layer image. 
         face = gray[y:y + h, x:x + w]
         face = cv2.resize(face, (im_width, im_height))
 
