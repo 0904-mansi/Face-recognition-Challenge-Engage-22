@@ -18,7 +18,7 @@ def train_model():
     (images, lables, names, id) = ([], [], {}, 0)
 
     for (subdirs, dirs, files) in os.walk(fn_dir):
-        # Loop through each folder named after the subject in the photos
+        # Loop through each folder named 
         for subdir in dirs:
             names[id] = subdir
             subjectpath = os.path.join(fn_dir, subdir)
@@ -51,8 +51,8 @@ def detect_faces(gray_frame):
     # Resize to speed up detection (optional, change size above)
     mini_frame = cv2.resize(gray_frame, (int(gray_frame.shape[1] / size), int(gray_frame.shape[0] / size)))
 
-    # Detect faces and loop through each one
-    faces = haar_cascade.detectMultiScale(mini_frame) # haar_cascade file will detect if image contains face or not
+    # Detect faces and loop through each one It lists coordinates (x, y, w,h) of bounding boxes around the detected object.
+    faces = haar_cascade.detectMultiScale(mini_frame)
     return faces
 
 # function for recognition 
@@ -77,8 +77,6 @@ def recognize_face(model, frame, gray_frame, face_coords, names):
         if (confidence<95 and names[prediction] not in recog_names):
             # if confidence<95 then draw a green rectangle
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-            recog_names.append(names[prediction])
-            recognized.append((names[prediction].capitalize(), confidence))
         # if confidence>=95 then draw a red rectangle with name
         elif (confidence >= 95):
             cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
