@@ -8,10 +8,10 @@ from tkinter.tix import Tk
 from PIL.Image import Image
 from PIL import ImageTk 
 import threading
+# module that offers several functions to deal with operations on files and their collections.
 import shutil
 from facerec2 import *
 from register2 import *
-from face_detection2 import *
 from handler2 import *
 import time
 import csv
@@ -23,7 +23,6 @@ import os
 from PIL import Image 
 
 #define variables
-# tracemalloc.start()
 active_page = 0
 thread_event = None
 left_frame = None
