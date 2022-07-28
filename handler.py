@@ -1,5 +1,4 @@
 # import modules
-import csv
 import pymysql
         
 # function for insert data in mysql database
