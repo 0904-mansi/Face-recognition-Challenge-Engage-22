@@ -5,6 +5,9 @@ import cv2, numpy, os
 size = 2
 #using face_cascade.xml file for recognition
 haar_cascade = cv2.CascadeClassifier('face_cascade.xml')
+# At this image processing stage, Fisherface method will be applied to generate feature vector of facial
+# image data used by system and then to match vector of traits of training image with vector
+# characteristic of test image using euclidean distance formula.
 
 # Part 1: using fisherRecognizer because fisherface takes less space also it has lower error rate comparison to eigenface
 def train_model():
