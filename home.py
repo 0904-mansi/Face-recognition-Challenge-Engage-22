@@ -478,24 +478,6 @@ def home():
                     # faulthandler.enable()
                     showImage(frame, img_size)
                             
-# function for webcam access                            
-#      def getPage3():
-#         global active_page, left_frame, right_frame, thread_event, heading
-#         active_page = 3
-#         pages[3].lift()
-
-#         basicPageSetup(3)
-#         # heading for video observation page 
-#         heading.configure(text="Video Observation", padx=20, pady=10, fg='white', highlightthickness=2,highlightbackground="#051729")
-
-#         btn_grid = tk.Frame(left_frame,bg="#051729")
-#         btn_grid.pack()
-        
-#         # added button for select video 
-#         tk.Button(btn_grid, text="Select Video", command=selectvideo, font="Verdana 13 bold", padx=20, bg="#000000",
-#                     fg="white", pady=10, bd=0, highlightthickness=2,highlightbackground="#051729", activebackground="#051729",
-#                     activeforeground="white").grid(row=0, column=0, padx=25, pady=25)
-        
 
     # video Observation Page ##
     def getPage4(path):
@@ -522,25 +504,7 @@ def home():
         thread.start()
 
    
-    # function for select video for webcam
-#     def selectvideo():
-#         global left_frame, img_label, img_read
-#         for wid in right_frame.winfo_children():
-#             wid.destroy()
-#         # setting filetypes
-#         filetype = [("video", "*.mp4 *.mkv")]
-#         path = filedialog.askopenfilename(title="Select a video", filetypes=filetype)
-#         p=''
-#         p=path
-#         # alerts
-#         if(len(path) > 0):
-#             getPage4(p)
-#         else:
-#             messagebox.showerror("please select a video")
-#             img_size =  left_frame.winfo_height() - 40
-#             faulthandler.enable()
-#             showImage(img_read, img_size)
-
+    
     # function for selecting video
     def selectvideo1():
         global left_frame, img_label, img_read
@@ -555,7 +519,7 @@ def home():
         if(len(path) > 0):
             # vid_read = cv2.imread(path)
             # print(vid_read)
-            detect(p)
+            detect(p)# detect function using frontalface file for detecting from videos that if video contains human or not
         else:
             messagebox.showerror("Please select a video")
 
