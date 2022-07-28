@@ -8,6 +8,9 @@ haar_cascade = cv2.CascadeClassifier('face_cascade.xml')
 
 # Part 1: using fisherRecognizer because fisherface takes less space also it has lower error rate comparison to eigenface
 def train_model():
+#     Pre-built face recognition models
+
+#     OpenCV supports local binary patterns histograms (or shortly LBPH), eigenface and fisherface methods. We can run them all within opencv.
     model = cv2.face.LBPHFaceRecognizer_create()
     fn_dir = 'face_samples'
 
