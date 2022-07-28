@@ -51,7 +51,7 @@ def detect_faces(gray_frame):
     mini_frame = cv2.resize(gray_frame, (int(gray_frame.shape[1] / size), int(gray_frame.shape[0] / size)))
 
     # Detect faces and loop through each one
-    faces = haar_cascade.detectMultiScale(mini_frame)
+    faces = haar_cascade.detectMultiScale(mini_frame) # haar_cascade file will detect if image contains face or not
     return faces
 
 # function for recognition 
