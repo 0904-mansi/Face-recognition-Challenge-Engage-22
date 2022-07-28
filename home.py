@@ -506,7 +506,8 @@ def home():
    
     
     # function for selecting video
-    def selectvideo1():
+                            
+    def selectvideo():
         global left_frame, img_label, img_read
         for wid in right_frame.winfo_children():
             wid.destroy()
@@ -515,13 +516,31 @@ def home():
         path = filedialog.askopenfilename(title="Choose a video", filetypes=filetype)
         p=''
         p=path
-#         faulthandler.enable()
+
         if(len(path) > 0):
             # vid_read = cv2.imread(path)
             # print(vid_read)
-            detect(p)# detect function using frontalface file for detecting from videos that if video contains human or not
-        else:
+            getPage4(p)
+         else:
             messagebox.showerror("Please select a video")
+                            
+                            
+#     def selectvideo1():
+#         global left_frame, img_label, img_read
+#         for wid in right_frame.winfo_children():
+#             wid.destroy()
+
+#         filetype = [("video", "*.mp4 *.mkv")]
+#         path = filedialog.askopenfilename(title="Choose a video", filetypes=filetype)
+#         p=''
+#         p=path
+# #         faulthandler.enable()
+#         if(len(path) > 0):
+#             # vid_read = cv2.imread(path)
+#             # print(vid_read)
+#             detect(p)# detect function using frontalface file for detecting from videos that if video contains human or not
+#         else:
+#             messagebox.showerror("Please select a video")
 
     ######################################## Home Page ####################################
     # heading of home page for Criminal Detection
@@ -537,11 +556,9 @@ def home():
     # added buttons with the functions
     b1 = Button(btn_frame, text="1. Register Criminal", command=getPage1)
     b2 = Button(btn_frame, text="2. Image Observation", command=getPage2)
-#     b3 = Button(btn_frame, text="3. Live Observation", command=getPage3)                         
     b4 = Button(btn_frame, text="3. Video Observation", command=getPage4)
     b1.pack()
     b2.pack()
-#     b3.pack()
     b4.pack()                        
     
 #    setting design of button
