@@ -8,6 +8,7 @@ def insertData(data):
     rowId = 0
     # connecting to the phpmyadmin localhost database
     db = pymysql.connect(host="localhost",user="root",password="",database="criminaldb")
+# db.cursor() Allows Python code to execute sql command in a database session
     cursor = db.cursor()
     print("Opened Database")
     print("Database Connected successfully")
