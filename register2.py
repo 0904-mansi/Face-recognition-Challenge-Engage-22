@@ -12,9 +12,7 @@ def registerPerson(img, path, img_num):
     faces = detect_faces(gray)
 #   multiple face can also be detected
     if(len(faces) > 0):
-# sorts faces based on the value of key as applied to each element of the list
-        faces = sorted(faces, key=lambda x: x[3], reverse=True)  # sort based on height of image
-#     Taking the largest face detected
+#     Taking the 1st face detected
         face_i = faces[0]
         (x, y, w, h) = [v * size for v in face_i]
 # converting RGB to gray Because it is a one layer image from 0-255 whereas the RGB have three different layer image. 
