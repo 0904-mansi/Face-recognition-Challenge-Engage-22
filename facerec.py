@@ -5,16 +5,14 @@ import cv2, numpy, os
 size = 2
 #using face_cascade.xml file for recognition
 haar_cascade = cv2.CascadeClassifier('face_cascade.xml')
-# At this image processing stage, Fisherface method will be applied to generate feature vector of facial
-# image data used by system and then to match vector of traits of training image with vector
-# characteristic of test image using euclidean distance formula.
 
-# Part 1: using fisherRecognizer because fisherface takes less space also it has lower error rate comparison to eigenface
 def train_model():
 #     Pre-built face recognition models
 
 #     OpenCV supports local binary patterns histograms (or shortly LBPH), eigenface and fisherface methods. We can run them all within opencv.
     model = cv2.face.LBPHFaceRecognizer_create()
+    #model = cv2.face.EigenFaceRecognizer_create()
+    #model = cv2.face.FisherFaceRecognizer_create()
     fn_dir = 'face_samples'
 
     (images, lables, names, id) = ([], [], {}, 0)
@@ -46,7 +44,7 @@ def train_model():
     return (model, names)
 
 
-# Part 2: Using fisherRecognizer 
+
 def detect_faces(gray_frame):
     global size, haar_cascade
 
