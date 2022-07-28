@@ -10,10 +10,10 @@ from tkinter.tix import Tk
 from tkvideo import tkvideo
 from PIL import ImageTk 
 import threading
+# module that offers several functions to deal with operations on files and their collections.
 import shutil
 from facerec import *
 from register import *
-from face_detection  import *
 from handler import *
 import time
 import csv
