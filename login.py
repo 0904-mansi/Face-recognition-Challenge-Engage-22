@@ -132,7 +132,7 @@ def mainfunction():
             very_pass.place(x=80,y=310)
 
             # Entry Box ------------------------------------------------------------------
-
+            # stringvar() helps us manage the value of a widget such as a Label or Entry more effectively.
             first_name = StringVar()
             last_name = StringVar()
             var= StringVar()
@@ -215,7 +215,6 @@ def mainfunction():
       password = StringVar()
             
       userentry = Entry(win, width=40 , textvariable = user_name)
-      userentry.focus()
       userentry.place(x=200 , y=223)
 
       passentry = Entry(win, width=40, show="*" ,textvariable = password)
