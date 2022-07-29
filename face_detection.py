@@ -16,7 +16,7 @@ def detect(path):
          # Resize the Frame to improve speed
         frame = imutils.resize(frame, width=450)
         # converting face into grayScale 
-        gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+        gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
         # detecting gray image using detectscale function
           faces = faceCascade.detectMultiScale(
                     gray,
