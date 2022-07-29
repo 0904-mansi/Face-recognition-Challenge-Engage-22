@@ -8,6 +8,10 @@ def detect(path):
 
 # while video is playing read faces
     while(True):
+        
+#     ret is a boolean variable that returns true if the frame is available.
+#     frame is an image array vector captured based on the default frames per second defined explicitly or implicitly
+
         ret,frame = cam.read()
          # Resize the Frame to improve speed
         frame = imutils.resize(frame, width=450)
@@ -25,6 +29,7 @@ def detect(path):
        # Draw a rectangle around the Faces
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+        recognize_face(model,frame,gray,(x, y, w, h),names)
 
     # Display the resulting Frame
     cv2.imshow('Video', frame)
