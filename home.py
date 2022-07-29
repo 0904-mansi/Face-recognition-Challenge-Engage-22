@@ -524,24 +524,6 @@ def home():
          else:
             messagebox.showerror("Please select a video")
                             
-                            
-#     def selectvideo1():
-#         global left_frame, img_label, img_read
-#         for wid in right_frame.winfo_children():
-#             wid.destroy()
-
-#         filetype = [("video", "*.mp4 *.mkv")]
-#         path = filedialog.askopenfilename(title="Choose a video", filetypes=filetype)
-#         p=''
-#         p=path
-# #         faulthandler.enable()
-#         if(len(path) > 0):
-#             # vid_read = cv2.imread(path)
-#             # print(vid_read)
-#             detect(p)# detect function using frontalface file for detecting from videos that if video contains human or not
-#         else:
-#             messagebox.showerror("Please select a video")
-
     ######################################## Home Page ####################################
     # heading of home page for Criminal Detection
     tk.Label(pages[0], text="Face Recognition System for Criminal Detection", fg="#ffffff", highlightbackground="white", highlightthickness=4,
@@ -573,5 +555,7 @@ def home():
     video_label.place(x=400, y=130)
     player = tkvideo("criminal.mp4", video_label,
                     loop = 1, size = (300, 200))
+   # play the video
     player.play()
+  # calling functopn
     root.mainloop()
