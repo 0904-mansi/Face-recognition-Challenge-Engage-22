@@ -29,7 +29,6 @@ def detect(path):
        # Draw a rectangle around the Faces
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
-        recognize_face(model,frame,gray,(x, y, w, h),names)
 
     # Display the resulting Frame
     cv2.imshow('Video', frame)
