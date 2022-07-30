@@ -1,4 +1,5 @@
 # import required modules
+# The OS module in Python provides functions for interacting with the operating system. 
 import cv2, numpy, os
 
 
@@ -16,27 +17,30 @@ def train_model():
     fn_dir = 'face_samples'
 
     (images, lables, names, id) = ([], [], {}, 0)
-
+    #  it yields a 3-tuple (dirpath, dirnames, filenames).
     for (subdirs, dirs, files) in os.walk(fn_dir):
         # Loop through each folder named 
         for subdir in dirs:
             names[id] = subdir
-            subjectpath = os.path.join(fn_dir, subdir)
+            #names[0] = first name will be 1st subdir
+            subjectpath = os.path.join(fn_dir, subdir) # face-sample/1st name
             # Loop through each photo in the folder
+            # os. listdir() method in python is used to get the list of all files and directories in the specified directory.
             for filename in os.listdir(subjectpath):
-                # Skip non-image formates
+                
                 f_name, f_extension = os.path.splitext(filename)
+                # Skip non-image formates
                 if(f_extension.lower() not in ['.png','.jpg','.jpeg','.gif','.pgm']):
                     print("Skipping "+filename+", wrong file type")
                     continue
-                path = subjectpath + '/' + filename
+                path = subjectpath + '/' + filename # face-sample/1st name/1.png
                 lable = id
                 # Add to training data
                 images.append(cv2.imread(path, 0))
                 lables.append(int(lable))
             id += 1
 
-    # Convert a list of images and labels to np array to train tensorflow
+    # Convert a list of images and labels to np array to train model
     (images, lables) = [numpy.array(lis) for lis in [images, lables]]
     # OpenCV trains a model from the images
     model.train(images, lables)
@@ -55,13 +59,13 @@ def recognize_face(model, frame, gray_frame, face_coords, names):
 
         # Coordinates of face after scaling down by size
         (x, y, w, h) = [v * size for v in face_i]
-        # converting this face to gray frame
+        # cutting the face frame out
         face = gray_frame[y:y + h, x:x + w]
         # resize the face
         face_resize = cv2.resize(face, (img_width, img_height))
 
         # Try to recognize the face
-        (prediction, confidence) = model.predict(face_resize)
+        (prediction, confidence) = model.predict(face_resize) # return list of integer values
 
         # print(prediction, confidence)
         if (confidence<95 and names[prediction] not in recog_names):
