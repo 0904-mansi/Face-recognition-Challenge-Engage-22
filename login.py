@@ -48,7 +48,11 @@ def mainfunction():
       #----------------------------------------------------------- Signup Window --------------------------------------------------
       # signup function
       def signup():
-           
+            
+            # close signup function			
+            def switch():
+                  winsignup.destroy()
+                  
             def action():
                   if first_name.get()=="" or last_name.get()=="" or user_name.get()=="" or password.get()=="" or very_pass.get()=="":
                         messagebox.showerror("Error" , "All Fields Are Required" , parent = winsignup)
@@ -81,9 +85,6 @@ def mainfunction():
                         except Exception as es:
                               messagebox.showerror("Error" , f"Error Dui to : {str(es)}", parent = winsignup)
 
-            # close signup function			
-            def switch():
-                  winsignup.destroy()
 
             # clear data function
             def clear():
