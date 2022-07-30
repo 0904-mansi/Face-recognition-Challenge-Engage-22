@@ -26,7 +26,6 @@ def insertData(data):
     rowId = cursor.lastrowid
     
     #c onfirmation message in terminal
-    print("data stored on new row in the database")
     print("Record Created")
     # close the database
     db.close()
