@@ -43,18 +43,6 @@ def train_model():
 
     return (model, names)
 
-
-
-def detect_faces(gray_frame):
-    global size, haar_cascade
-
-    # Resize to speed up detection (optional, change size above)
-    mini_frame = cv2.resize(gray_frame, (int(gray_frame.shape[1] / size), int(gray_frame.shape[0] / size)))
-
-    # Detect faces and loop through each one It lists coordinates (x, y, w,h) of bounding boxes around the detected object.
-    faces = haar_cascade.detectMultiScale(mini_frame)
-    return faces
-
 # function for recognition 
 def recognize_face(model, frame, gray_frame, face_coords, names):
     (img_width, img_height) = (112, 92)
