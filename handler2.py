@@ -12,6 +12,7 @@ def insertData(data):
     print("Opened Database")
     print("Database Connected successfully")
     # query for insert data into table missingdata 
+    # As the whole query needs to be in a string format while execution of query so %s is used for formatting
     query = "INSERT INTO missingdata VALUES('%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');" % \
             (data["Report-ID"], data["Name"], data["Father's Name"], data["Address"],
              data["Phone"], data["Gender"], data["DOB(yyyy-mm-dd)"],
