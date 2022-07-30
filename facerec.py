@@ -36,7 +36,7 @@ def train_model():
                 lables.append(int(lable))
             id += 1
 
-    # Create a Numpy array from the two lists above
+    # Convert a list of images and labels to np array to train tensorflow
     (images, lables) = [numpy.array(lis) for lis in [images, lables]]
     # OpenCV trains a model from the images
     model.train(images, lables)
@@ -50,12 +50,14 @@ def recognize_face(model, frame, gray_frame, face_coords, names):
     recognized = []
     recog_names = []
 
-    for i in range(len(face_coords)):
+    for i in range(len(face_coords)): # face_coords is list
         face_i = face_coords[i]
 
-        # Coordinates of face 
+        # Coordinates of face after scaling down by size
         (x, y, w, h) = [v * size for v in face_i]
+        # converting this face to gray frame
         face = gray_frame[y:y + h, x:x + w]
+        # resize the face
         face_resize = cv2.resize(face, (img_width, img_height))
 
         # Try to recognize the face
