@@ -44,7 +44,7 @@ def train_model():
     return (model, names)
 
 # function for recognition 
-def recognize_face(model, frame, gray_frame, face_coords, names):
+def recognize_face(model, frame, gray_frame, face_coords, names): 
     (img_width, img_height) = (112, 92)
     #defining two list (using list because list is mutable in python also direct access is possible)
     recognized = []
