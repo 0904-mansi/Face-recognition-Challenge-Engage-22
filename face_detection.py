@@ -8,6 +8,8 @@ def detect_faces(gray_frame):
     global size, haar_cascade # using cascade file
 
     # Resize to speed up detection (optional, change size above)
+    # cv2.resize(src, dsize[, dst[, fx[, fy[, interpolation]]]])
+                                         # width                          # height   
     mini_frame = cv2.resize(gray_frame, (int(gray_frame.shape[1] / size), int(gray_frame.shape[0] / size)))
 
     # Detect faces and loop through each one It lists coordinates (x, y, w,h) of bounding boxes around the detected object.
