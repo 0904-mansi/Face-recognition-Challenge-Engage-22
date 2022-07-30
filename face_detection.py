@@ -1,6 +1,24 @@
+# importing required modules
 import numpy as np 
 import cv2
 
+
+# detect face from image
+def detect_faces(gray_frame):
+    global size, haar_cascade # using cascade file
+
+    # Resize to speed up detection (optional, change size above)
+    mini_frame = cv2.resize(gray_frame, (int(gray_frame.shape[1] / size), int(gray_frame.shape[0] / size)))
+
+    # Detect faces and loop through each one It lists coordinates (x, y, w,h) of bounding boxes around the detected object.
+    faces = haar_cascade.detectMultiScale(mini_frame)
+    # draw a rectangle on face
+      for (x, y, w, h) in faces:
+        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+
+    return faces
+
+# detect face from video
 def detect(path):
     facedetect = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
     cam = cv2.VideoCapture(path)
