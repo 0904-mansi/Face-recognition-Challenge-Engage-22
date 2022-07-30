@@ -36,7 +36,7 @@ def detect(path):
         # converting face into grayScale 
         gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
         # detecting gray image using detectscale function
-          faces = faceCascade.detectMultiScale(
+          faces = facedetect.detectMultiScale(
                     gray,
                     scaleFactor=1.1, # This tells how much the object’s size is reduced in each image.
                     minNeighbors=5, # This parameter tells how many neighbours each rectangle candidate should consider.
