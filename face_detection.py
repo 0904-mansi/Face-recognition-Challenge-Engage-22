@@ -52,10 +52,6 @@ def detect(path):
                 )
 
         
-       # Draw a rectangle around the Faces
-    for (x, y, w, h) in faces:
-        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
-
     # Display the resulting Frame
     cv2.imshow('Video', frame)
 # waitkey() function of Python OpenCV allows users to display a window for given milliseconds or until any key is pressed.
