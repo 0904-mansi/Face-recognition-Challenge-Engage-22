@@ -8,8 +8,8 @@ def registerCriminal(img, path, img_num):
     (im_width, im_height) = (112, 92)
     # applied formula so that new image will be start from odd num
     file_num = 2*img_num - 1
-    #      for image 1 filenum will be one
-    #       for image 2 filenum will be 3
+    # for image 1 filenum will be one
+    # for image 2 filenum will be 3
    # converting RGB to gray Because it is a one layer image from 0-255 whereas the RGB have three different layer image. 
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     # calling detect face function will return face
