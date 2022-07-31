@@ -2,9 +2,7 @@
 import cv2
 from face_detection import detect_faces
 
-def registerCriminal(img, path, img_num):
-    # initializing with 2 because 1 image will be stored 2 times
-  
+def registerCriminal(img, path, img_num):  
     (im_width, im_height) = (112, 92)
     # applied formula so that new image will be start from odd num
     file_num = 2*img_num - 1
