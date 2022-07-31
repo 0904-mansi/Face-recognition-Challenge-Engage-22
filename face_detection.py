@@ -57,9 +57,9 @@ def detect(path):
     # Display the resulting Frame
     cv2.imshow('Video', frame)
 # waitkey() function of Python OpenCV allows users to display a window for given milliseconds or until any key is pressed.
-    if cv2.waitKey(1):
-        break
+    cv2.waitKey(1):
+      
     
-# When everything is done, release the Capture
+# When everything is done, release the cam and close all the windows
 cam.release()
 cv2.destroyAllWindows()
