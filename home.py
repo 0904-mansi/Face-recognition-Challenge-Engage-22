@@ -85,6 +85,7 @@ def home():
         content.pack(expand="true", fill="both")
         
         left_frame = tk.Frame(content, bg="#051729")
+        # sticky value of nsew (north, south, east, west), meaning it will stick to every side
         left_frame.grid(row=0, column=0, sticky="nsew")
         
         # created a column where detected criminals will be listed
@@ -92,15 +93,14 @@ def home():
                     foreground="white", labelanchor="n")# labelanchor="n" is for string label
         right_frame.grid(row=0, column=1, sticky="nsew", padx=20, pady=20)
         # creating column where result will be displayed
-        content.grid_columnconfigure(0, weight=1, uniform="group1")
-        content.grid_columnconfigure(1, weight=1, uniform="group1")
+        content.grid_columnconfigure(1, weight=1) # weight=1 allows the column width to grow with the frame.
         content.grid_rowconfigure(0, weight=1)
 
 
     def showImage(frame, img_size):
         global img_label, left_frame
         img = cv2.resize(frame, (img_size, img_size))
-        # converting image into rgb format
+        # converting image into rgb format several image processing libraries have different pixel orderings.
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
          # creating array
         img = Image.fromarray(img)
@@ -133,42 +133,30 @@ def home():
             # caption
             slide_caption.configure(text = "Image {} of {}".format(current_slide+1, len(img_list)), fg = "white")
 
-    # function for selecting multiple pages
+    # function for selecting multiple images
     def selectMultiImage(opt_menu, menu_var):
         global img_list, current_slide, slide_caption, slide_control_panel
         # file type must be in png format
-        filetype = [("images", "*.png")]
+        filetype = [("images", "*.png","*.jpg","*.jpeg","*.pgm")]
+        # The askopenfilename() function returns the file name that you selected.
         path_list = filedialog.askopenfilenames(title="Choose atleast 5 images", filetypes=filetype)
         # error for selecting 5 images
         if(len(path_list) < 5):
             messagebox.showerror("Error", "Choose atleast 5 images.")
         else:
             img_list = []
-            current_slide = -1
-
-            # Resetting slide control panel
-            if (slide_control_panel != None):
-                slide_control_panel.destroy()
+            current_slide = -1 # because list in python starts from index 0
 
             # Creating Image list
             for path in path_list:
+                # adding images to img_list
                 img_list.append(cv2.imread(path))
-
-            # Creating choices for profile pic menu
-            menu_var.set("")
-            opt_menu['menu'].delete(0, 'end')
-            # choose any one image for profile pic
-            for i in range(len(img_list)):
-                ch = "Image " + str(i+1)
-                opt_menu['menu'].add_command(label=ch, command= tk._setit(menu_var, ch))
-                menu_var.set("Image 1")
-
 
             # Creating slideshow of images
             img_size =  left_frame.winfo_height() - 200
             current_slide += 1
             showImage(img_list[current_slide], img_size)
-
+            # slide_control_panel is frame which contains image on leftframe taht are prev and next buttons and caption
             slide_control_panel = tk.Frame(left_frame, bg="#051729", pady=20)
             slide_control_panel.pack()
             # adding buttons for switch over to images
@@ -176,6 +164,7 @@ def home():
             next_img = tk.PhotoImage(file="next.png")
             prev_slide = tk.Button(slide_control_panel, image=back_img, bg="#051729", bd=0, highlightthickness=0,
                                 activebackground="#051729", command=lambda : getNewSlide("prev"))
+            # lambda : allow us to send multiple data through the callback function. 
             prev_slide.image = back_img
             prev_slide.grid(row=0, column=0, padx=60)
 
@@ -198,10 +187,10 @@ def home():
             return
 
         # Fetching data from entries
-        entry_data = {}
+        entry_data = {} # dictionary it will store the key value pair
         for i, entry in enumerate(entries):
             # print(i)
-            val = entry[1].get()
+            val = entry[i].get()
             # print(val)
             
             # error for required field missing
@@ -209,7 +198,7 @@ def home():
                 messagebox.showerror("Field Error", "Required field missing :\n\n%s" % (entry[0]))
                 return
             else:
-                entry_data[entry[0]] = val.lower()
+                entry_data[entry[i]] = val.lower()
 
 
         # Setting Directory for storing temp images of registered criminal
@@ -217,22 +206,10 @@ def home():
         if not os.path.isdir(path):
             os.mkdir(path)
 
-        no_face = []
         for i, img in enumerate(img_list):
             # adding registered person in no_face list
             id = registerCriminal(img, path, i + 1)
-                if(id != None):
-                no_face.append(id)
-
-        # check if any image doesn't contain face
-        if(len(no_face) > 0):
-            no_face_st = ""
-            for i in no_face:
-                no_face_st += "Image " + str(i) + ", "
-            messagebox.showerror("Registration Error", "Registration failed!\n\nFollowing images doesn't contain"
-                            " face or Face is not clear:\n\n%s"%(no_face_st))
-            shutil.rmtree(path, ignore_errors=True)
-        else:
+                
             # Storing data in database
             insertData(entry_data)
             rowId=1
@@ -248,11 +225,6 @@ def home():
                 messagebox.showerror("Database Error", "Some error occured while storing data.")
 
 
-    ## update scrollregion when all widgets are in canvas
-#     def on_configure(event, canvas, win):
-#         canvas.configure(scrollregion=canvas.bbox('all'))
-#         canvas.itemconfig(win, width=event.width)
-
     ## Register Page ##
     def getPage1():
         global active_page, left_frame, right_frame, heading, img_label
@@ -265,13 +237,13 @@ def home():
         # adding title in first page
         basicPageSetup(1)
         heading.configure(text="Register Criminal here",fg="white", highlightthickness=2, highlightbackground="white",bg="#051729")
-        # creating column for enter details
+        # configuring column for enter details
         right_frame.configure(text="Enter Details", fg="white", bg="#051729")
         btn_grid = tk.Frame(left_frame, bg="#051729")
         btn_grid.pack()
         
         #adding button for select multiple images
-        tk.Button(btn_grid, text="Select Images", command=lambda: selectMultiImage(opt_menu, menu_var), font="Verdana 13 bold", bg="#000000",
+        tk.Button(btn_grid, text="Select Images", command=selectMultiImage(opt_menu, menu_var), font="Verdana 13 bold", bg="#000000",
             fg="white", pady=10, bd=0, highlightthickness=2,highlightbackground="#051729", activebackground="#000000",
             activeforeground="white").grid(row=0, column=0, padx=25, pady=25)
 
@@ -281,6 +253,7 @@ def home():
         # You can place graphics, text, widgets or frames on a Canvas.
         canvas = tk.Canvas(right_frame, bg="#051729", highlightthickness=0)
         canvas.pack(side="left", fill="both", expand="true", padx=30)
+        # creating scrollbar using canvas                    
         scrollbar = tk.Scrollbar(right_frame, command=canvas.yview, width=20, troughcolor="#051729", bd=0,
                             activebackground="#051729", bg="#000000", relief="raised")
         scrollbar.pack(side="left", fill="y")
@@ -307,7 +280,6 @@ def home():
             label.insert("insert", field)
             label.pack(side="left")
             
-            # making fields required
             if(required[i] == 1):
                 label.tag_configure("star", foreground="red", font="Verdana 13 bold")
                 label.insert("end", "  *", "star")
@@ -343,7 +315,7 @@ def home():
         for wid in right_frame.winfo_children():
             wid.destroy()
         #  flipping image for detecting
-        frame = cv2.flip(img_read, 1, 0)
+        frame = cv2.flip(img_read, 1)
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
         face_coords = detect_faces(gray_frame)
@@ -359,7 +331,7 @@ def home():
             
             (frame, recognized) = recognize_face(model, frame, gray_frame, face_coords, names)
             img_size = left_frame.winfo_height() - 40
-            frame = cv2.flip(frame, 1, 0)
+            frame = cv2.flip(frame, 1)
             showImage(frame, img_size)
             # starting recognition
             if (len(recognized) == 0):
@@ -422,7 +394,7 @@ def home():
         filenam, file_extension = os.path.splitext(q)
         global thread_event, left_frame, webcam, img_label
         start=time.time()
-#       webcam = cv2.VideoCapture(p)
+        webcam = cv2.VideoCapture(p)
         old_recognized = []
         crims_found_labels = []
         times = []
@@ -453,13 +425,6 @@ def home():
                     face_coords = detect_faces(gray_frame)
                     (frame, recognized) = recognize_face(model, frame, gray_frame, face_coords, names)
 
-                    # Recognize Faces
-                    recog_names = [item[0] for item in recognized]
-                    if(recog_names != old_recognized):
-                        for wid in right_frame.winfo_children():
-                            wid.destroy()
-                        del(crims_found_labels[:])
-
                         for i, crim in enumerate(recognized):
                             num+=1
                             x=time.time()-start
@@ -475,14 +440,12 @@ def home():
 
                     # Display Video stream
                     img_size = min(left_frame.winfo_width(), left_frame.winfo_height()) - 20
-                    # faulthandler.enable()
                     showImage(frame, img_size)
                             
 
     # video Observation Page ##
     def getPage4(path):
         p=path
-        # print(p)
         global active_page, left_frame, right_frame, thread_event, heading
         active_page = 4
         pages[4].lift()
@@ -518,8 +481,6 @@ def home():
         p=path
 
         if(len(path) > 0):
-            # vid_read = cv2.imread(path)
-            # print(vid_read)
             getPage4(p)
          else:
             messagebox.showerror("Please select a video")
