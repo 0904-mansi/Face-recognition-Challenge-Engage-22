@@ -2,14 +2,11 @@
 # The OS module in Python provides functions for interacting with the operating system. 
 import cv2, numpy, os
 
-
-size = 2
 #using face_cascade.xml file for recognition
 haar_cascade = cv2.CascadeClassifier('face_cascade.xml')
 
 def train_model():
 #     Pre-built face recognition models
-
 #     OpenCV supports local binary patterns histograms (or shortly LBPH), eigenface and fisherface methods. We can run them all within opencv.
     model = cv2.face.LBPHFaceRecognizer_create()
     #model = cv2.face.EigenFaceRecognizer_create()
@@ -30,13 +27,13 @@ def train_model():
                 
                 f_name, f_extension = os.path.splitext(filename)
                 # Skip non-image formates
-                if(f_extension.lower() not in ['.png','.jpg','.jpeg','.gif','.pgm']):
+                if(f_extension.lower() not in ['.png','.jpg','.jpeg','.pgm']):
                     print("Skipping "+filename+", wrong file type")
                     continue
                 path = subjectpath + '/' + filename # face-sample/1st name/1.png
-                lable = id
+                lable = id # 0 1 2 3  
                 # Add to training data
-                images.append(cv2.imread(path, 0))
+                images.append(cv2.imread(path))# will returnn matrix of pixels
                 lables.append(int(lable))
             id += 1
 
@@ -50,6 +47,7 @@ def train_model():
 # function for recognition 
 def recognize_face(model, frame, gray_frame, face_coords, names): 
     (img_width, img_height) = (112, 92)
+    size = 2
     #defining two list (using list because list is mutable in python also direct access is possible)
     recognized = []
     recog_names = []
@@ -58,7 +56,7 @@ def recognize_face(model, frame, gray_frame, face_coords, names):
         face_i = face_coords[i]
 
         # Coordinates of face after scaling down by size
-        (x, y, w, h) = [v * size for v in face_i]
+        (x, y, w, h) = [v * size for v in face_i] # size = 2
         # cutting the face frame out
         face = gray_frame[y:y + h, x:x + w]
         # resize the face
