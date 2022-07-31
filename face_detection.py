@@ -5,7 +5,8 @@ import cv2
 
 # detect face from image
 def detect_faces(gray_frame):
-    global size, haar_cascade # using cascade file
+    global haar_cascade # using cascade file
+    size = 2
 
     # Resize to speed up detection (optional, change size above)
     # cv2.resize(src, dsize[, dst[, fx[, fy[, interpolation]]]])
