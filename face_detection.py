@@ -1,6 +1,7 @@
 # importing required modules
 import numpy as np 
 import cv2
+import imutils # functions to make basic image processing functions like resizing
 
 
 # detect face from image
@@ -17,7 +18,8 @@ def detect_faces(gray_frame):
     faces = haar_cascade.detectMultiScale(mini_frame)
     # draw a rectangle on face
       for (x, y, w, h) in faces:
-        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+       # cv2.rectangle(image, start_point, end_point, color, thickness)
+        cv2.rectangle(mini_frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
     return faces
 
