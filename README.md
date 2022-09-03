@@ -72,7 +72,7 @@ Python MySQL Connector is a Python driver that helps to integrate Python and MyS
 6. Run the main python file `python or python3 main.py`.
 7. Now experience the GUI and features of the project.
 
-## Glimps of my Application 💁🏻‍♀️
+## Glimpse of my Application 💁🏻‍♀️
 
 **Login Page**            |  **Sign-Up Page**
 :-------------------------:|:-------------------------:
