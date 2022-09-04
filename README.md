@@ -119,10 +119,18 @@ https://user-images.githubusercontent.com/81081105/170838208-4eea8b95-a8a3-428b-
 1. comment the line 31 in `main.py` file.
 2. Uncomment the lines 296, 297 and 302 in `main.py` file also uncomment that complete mainfuntion in `main.py` file.  
 
+## Added Webcam Support for real time detection
+
+**Live Observation**      |  **Webcam access**
+:-------------------------:|:-------------------------:
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/81081105/188306412-ff133778-1981-4f82-955d-b854bf05f249.png"> |  <img width="600" alt="image" src="https://user-images.githubusercontent.com/81081105/188306792-6a60cf99-d0ba-48a7-be75-29e8f7af61cb.png">
+
+
 ## Future Scope 🕵️‍♀️
 
 1. Fingerprint Recognition and Eye detection can be added for Observation.
-2. Webcam Support can be added as a feature.
+
+✅ 2. Webcam Support can be added as a feature.
 
 ## Documents related to project 📑
 
