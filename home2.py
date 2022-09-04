@@ -1,5 +1,8 @@
 # import required modules
 import tracemalloc
+import numpy as np
+import face_recognition as fr
+import cv2
 from tkinter import *
 from tkvideo import tkvideo
 import tkinter as tk
@@ -579,10 +582,13 @@ def home2():
     b1 = tk.Button(btn_frame, text="1. Register People", command=getPage1)
     b2 = tk.Button(btn_frame, text="2. Image Observation", command=getPage2)
     b3 = tk.Button(btn_frame, text="3. Video Observation", command=getPage3)
-    b1.pack(pady=30,padx=60)
-    b2.pack(pady=30)
-    b3.pack(pady=30)
+    b4 = tk.Button(btn_frame, text="4. Live Observation", command=web)
 
+    b1.pack(pady=10)
+    b2.pack(pady=10)
+    b3.pack(pady=10)
+    b4.pack(pady=10)
+    # designing buttons
     for btn in btn_frame.winfo_children():
         btn.configure(font="Helvetica 20 bold", width=17, fg="white",
             pady=15, bd=0,highlightbackground="#051729", highlightthickness=4)
