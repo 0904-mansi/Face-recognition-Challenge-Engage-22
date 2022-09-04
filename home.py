@@ -15,6 +15,7 @@ import shutil
 from facerec import *
 from register import *
 from handler import *
+from webcam import web
 import time
 import csv
 import pymysql
@@ -499,10 +500,13 @@ def home():
     # added buttons with the functions
     b1 = Button(btn_frame, text="1. Register Criminal", command=getPage1)
     b2 = Button(btn_frame, text="2. Image Observation", command=getPage2)
-    b4 = Button(btn_frame, text="3. Video Observation", command=getPage4)
+    b3 = Button(btn_frame, text="3. Video Observation", command=getPage3)
+    b4 = tk.Button(btn_frame, text="4. Live Observation", command=web)
     b1.pack()
     b2.pack()
-    b4.pack()                        
+    b3.pack()
+    b4.pack()
+                        
     
 #    setting design of button
     for btn in btn_frame.winfo_children():
