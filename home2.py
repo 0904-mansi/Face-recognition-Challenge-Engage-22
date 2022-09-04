@@ -8,6 +8,7 @@ from tkvideo import tkvideo
 import tkinter as tk
 from tkinter import ttk, messagebox, Label, filedialog
 from tkinter.tix import Tk
+from webcam import web
 from PIL.Image import Image
 from PIL import ImageTk 
 import threading
