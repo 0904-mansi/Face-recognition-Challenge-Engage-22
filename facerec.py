@@ -13,7 +13,7 @@ def train_model():
     #model = cv2.face.FisherFaceRecognizer_create()
     fn_dir = 'face_samples'
 
-    (images, lables, names, id) = ([], [], {}, 0)
+    (images, lables, names, id) = ([], [], {}, 1)
     #  it yields a 3-tuple (dirpath, dirnames, filenames).
     for (subdirs, dirs, files) in os.walk(fn_dir):
         # Loop through each folder named 
