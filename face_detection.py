@@ -27,7 +27,6 @@ def detect_faces(gray_frame):
 def detect(path):
     facedetect = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
     cam = cv2.VideoCapture(path)
-    sampleNum = 0
 
 # while video is playing read faces
     while(True):
@@ -50,7 +49,8 @@ def detect(path):
                     minNeighbors=7, # This parameter tells how many neighbours each rectangle candidate should consider.
                     minSize=(30, 30) # This signifies the minimum possible size of an object to be detected. An object smaller than minSize would be ignored.
                 )
-
+          for(x,y,w,h) in faces:
+             cv2.rectangle(faces,(x,y),(x+w,y+h),(0,255,0),2)
         
     # Display the resulting Frame
     cv2.imshow('Video', frame)
