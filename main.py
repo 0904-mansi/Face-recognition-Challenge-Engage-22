@@ -18,11 +18,6 @@ import pymysql
 import ntpath
 import os
 from PIL import Image
-import tracemalloc 
-import tkinter as tk
-from tkinter import ttk, messagebox, filedialog
-from tkinter.tix import Tk
-from PIL import ImageTk 
 import threading
 import shutil
 import numpy as np
@@ -39,8 +34,8 @@ window.title("Face-recognition challenge")
 window.geometry("1300x900")
 # Adding Background image to main window
 bgg = PIL.Image.open("bg.png")
-bgg = bgg.resize((1500, 900),PIL.Image.ANTIALIAS)
-pimg=ImageTk.PhotoImage(bgg)
+bgg = bgg.resize((1300, 900))
+pimg = ImageTk.PhotoImage(bgg)
 
 # adding label heading of my project
 label = tk.Label(window,image=pimg)
