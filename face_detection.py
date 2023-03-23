@@ -10,7 +10,6 @@ def detect_faces(gray_frame):
     size = 2
 
     # Resize to speed up detection (optional, change size above)
-    # cv2.resize(src, dsize[, dst[, fx[, fy[, interpolation]]]])
                                          # width                          # height   
     mini_frame = cv2.resize(gray_frame, (int(gray_frame.shape[1] / size), int(gray_frame.shape[0] / size)))
 
