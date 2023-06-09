@@ -6,7 +6,7 @@ Develop a browser-based application or a native mobile application to demonstrat
 
 ## Solution ✨
 
-I propose criminal identification system and missing people identification to enhance and upgrade the criminal distinguishing into a more effective and efficient approach. Technology working behind it will be face recognition system will detect the face and recognize the criminal who is present in records. The captured images of the person coming to that public place get compared with the criminal data we have in our database. If any person’s face from public place matches, the system will display their image on the system screen and will give the message with their name that the criminal is found and present in this public place.
+In this project, I developed a desktop application using the face-recognition technique in python. I propose a criminal identification & Missing people identification system to enhance and upgrade criminal distinction into a more effective and efficient approach. Technology working behind it is face recognition. From the captured images of the person, faces get cropped and compared with the criminal data we have in our database. If any person’s face from image or videos matches, the system will display their name on the system screen.
 
 <!--
 ## Presentation 
