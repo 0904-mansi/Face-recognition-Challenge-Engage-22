@@ -65,7 +65,7 @@ def recognize_face(model, frame, gray_frame, face_coords, names):
 
     # print(prediction, confidence)
         if (confidence<95 and names[prediction] not in recog_names):
-            # if confidence<95 then draw a green rectangle
+            # if confidence<95 and the predicted name (retrieved from the names list using the prediction) is not already in the recog_names list, then draw a green rectangle
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
             # adding name to recog_names
             recog_names.append(names[prediction])
