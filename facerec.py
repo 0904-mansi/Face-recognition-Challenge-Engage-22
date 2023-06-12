@@ -51,8 +51,8 @@ def recognize_face(model, frame, gray_frame, face_coords, names):
 
      for i in range(len(face_coords)):
         face_i = face_coords[i]
-        face = gray_frame[y:y + h, x:x + w]
-        face_resize = cv2.resize(face, (img_width, img_height))
+        face_i = gray_frame[y:y + h, x:x + w]
+        face_resize = cv2.resize(face_i, (img_width, img_height))
 
     # Try to recognize the face
         (prediction, confidence) = model.predict(gray_frame) # return list of integer values
