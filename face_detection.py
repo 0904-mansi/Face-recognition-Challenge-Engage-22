@@ -52,7 +52,7 @@ def detect(path):
              cv2.rectangle(faces,(x,y),(x+w,y+h),(0,255,0),2)
              cv2.waitKey(1)
     # Display the image in a window named 'face'
-    cv2.imshow('face', img)
+    cv2.imshow('face', faces)
 # waitkey() function of Python OpenCV allows users to display a window for given milliseconds or until any key is pressed.
     cv2.waitKey(1)
    
