@@ -46,7 +46,7 @@ def detect(path):
           faces = facedetect.detectMultiScale(
                     gray,
                     scaleFactor=1.1, # This tells how much the object’s size is reduced in each image.
-                    minNeighbors=7, # This parameter tells how many neighbours each rectangle candidate should consider.
+                    minNeighbors=5, # This parameter tells how many neighbours each rectangle candidate should consider.
                     minSize=(30, 30) # This signifies the minimum possible size of an object to be detected. An object smaller than minSize would be ignored.
                 )
           for(x,y,w,h) in faces:
