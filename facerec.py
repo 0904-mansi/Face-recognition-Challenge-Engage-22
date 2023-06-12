@@ -16,8 +16,6 @@ def train_model():
     for (subdirs, dirs, files) in os.walk(fn_dir):
         # Loop through each folder named 
         for subdir in dirs:
-            names[id] = subdir
-            #names[0] = first name will be 1st subdir
             subjectpath = os.path.join(fn_dir, subdir) # face-sample/1st name
             # Loop through each photo in the folder
             # os. listdir() method in python is used to get the list of all files and directories in the specified directory.
@@ -47,16 +45,12 @@ def train_model():
 # function for recognition 
 def recognize_face(model, frame, gray_frame, face_coords, names): 
     (img_width, img_height) = (112, 92)
-    size = 2
     #defining two list (using list because list is mutable in python also direct access is possible)
     recognized = []
     recog_names = []
 
      for i in range(len(face_coords)):
         face_i = face_coords[i]
-
-        # Coordinates of face after scaling back by `size`
-        (x, y, w, h) = [v / size for v in face_i] # each coordinate will be treated as v/2  ex. x/2, y/2
         face = gray_frame[y:y + h, x:x + w]
         face_resize = cv2.resize(face, (img_width, img_height))
 
