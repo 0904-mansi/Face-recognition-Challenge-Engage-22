@@ -9,11 +9,9 @@ def train_model():
 #     Pre-built face recognition models
 #     OpenCV supports local binary patterns histograms (or shortly LBPH), eigenface and fisherface methods. We can run them all within opencv.
     model = cv2.face.LBPHFaceRecognizer_create()
-    #model = cv2.face.EigenFaceRecognizer_create()
-    #model = cv2.face.FisherFaceRecognizer_create()
     fn_dir = 'face_samples'
 
-    (images, lables, names, id) = ([], [], {}, 1)
+    (images, labels, names, id) = ([], [], {}, 0)
     #  it yields a 3-tuple (dirpath, dirnames, filenames).
     for (subdirs, dirs, files) in os.walk(fn_dir):
         # Loop through each folder named 
@@ -31,16 +29,16 @@ def train_model():
                     print("Skipping "+filename+", wrong file type")
                     continue
                 path = subjectpath + '/' + filename # face-sample/1st name/1.png
-                lable = id # 0 1 2 3  
+                label = id # 0 1 2 3  
                 # Add to training data
                 images.append(cv2.imread(path))# will returnn matrix of pixels
-                lables.append(int(lable))
+                labels.append(int(label))
             id += 1
 
     # Convert a list of images and labels to np array to train model
-    (images, lables) = [numpy.array(lis) for lis in [images, lables]]
+    (images, labels) = [numpy.array(lis) for lis in [images, labels]]
     # OpenCV trains a model from the images
-    model.train(images, lables)
+    model.train(images, labels)
 
     return (model, names)
 
