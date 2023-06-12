@@ -50,21 +50,13 @@ def detect(path):
                     minSize=(30, 30) # This signifies the minimum possible size of an object to be detected. An object smaller than minSize would be ignored.
                 )
           for(x,y,w,h) in faces:
-             sampleNum+=1
-             cv2.imwrite('dataset/'+str(sampleNum)+'.jpg',gray[y:y+h,x:x+w])
              cv2.rectangle(faces,(x,y),(x+w,y+h),(0,255,0),2)
              cv2.waitKey(1)
- 
-       
-        
     # Display the image in a window named 'face'
     cv2.imshow('face', img)
 # waitkey() function of Python OpenCV allows users to display a window for given milliseconds or until any key is pressed.
     cv2.waitKey(1)
-    if(sampleNum>100):
-            break
-      
-    
+   
 # When everything is done, release the cam and close all the windows
 cam.release()
 cv2.destroyAllWindows()
