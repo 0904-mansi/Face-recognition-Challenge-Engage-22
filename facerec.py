@@ -51,7 +51,7 @@ def recognize_face(model, frame, gray_frame, face_coords, names):
 
      for i in range(len(face_coords)):
         face_i = face_coords[i]
-        face_i = gray_frame[y:y + h, x:x + w]
+        face_i = gray_frame[y:y + h, x:x + w]# Here we are setting face_i to be our region of interest. That’s where we will look for the eyes.
         face_resize = cv2.resize(face_i, (img_width, img_height))
 
     # Try to recognize the face
