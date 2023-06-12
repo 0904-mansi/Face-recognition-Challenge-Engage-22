@@ -32,7 +32,7 @@ def train_model():
                # reads the image from the path using the cv2.imread() function and appends it to the images list. This list will contain the pixel matrices of the images used for training the facial recognition model
                 images.append(cv2.imread(path))
                 # appends the label (converted to an integer) to the labels list
-                labels.append(int(label))
+                labels.append(label)
             id += 1
 
     # Convert a list of images and labels to np array to train model
