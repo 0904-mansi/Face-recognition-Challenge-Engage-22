@@ -3,7 +3,6 @@ import cv2
 from facerec2 import detect_faces
 # function for registering a person
 def registerPerson(img, path, img_num):
-    size = 2
     (im_width, im_height) = (112, 92)
     file_num = 2*img_num - 1
 
@@ -14,7 +13,7 @@ def registerPerson(img, path, img_num):
     if(len(faces) > 0):
 #     Taking the 1st face detected
         face_i = faces[0]
-        (x, y, w, h) = [v * size for v in face_i]
+        (x, y, w, h) = [v for v in face_i]
 # converting RGB to gray Because it is a one layer image from 0-255 whereas the RGB have three different layer image. 
         face = gray[y:y + h, x:x + w]
         face = cv2.resize(face, (im_width, im_height))
