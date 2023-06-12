@@ -26,7 +26,6 @@ def detect_faces(gray_frame):
 def detect(path):
     facedetect = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
     cam = cv2.VideoCapture(path)
-    sampleNum = 0
 
 # while video is playing read faces
     while(True):
