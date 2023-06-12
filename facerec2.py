@@ -46,17 +46,12 @@ def train_model():
 # function for recognition 
 def recognize_face(model, frame, gray_frame, face_coords, names): 
     (img_width, img_height) = (112, 92)
-     size = 2
     #defining two list (using list because list is mutable in python also direct access is possible)
     recognized = []
     recog_names = []
 
     for i in range(len(face_coords)): # face_coords is list
         face_i = face_coords[i]
-
-        # Coordinates of face after scaling down by size
-        (x, y, w, h) = [v * size for v in face_i]
-        # converting this face to gray frame
         face = gray_frame[y:y + h, x:x + w]
         # resize the face
         face_resize = cv2.resize(face, (img_width, img_height))
