@@ -14,7 +14,10 @@ def registerCriminal(img, path, img_num):
     faces = detect_faces(gray)
 
     if(len(faces) > 0):
-        face_i = faces[0]# taking first image
+        faces = sorted(faces, reverse=True)  # sort based on height of image in desc order
+        face_i = faces[0]
+        (x, y, w, h) = [v for v in face_i]
+        face = gray[y:y + h, x:x + w]
        # resizing image according to height and width
         face = cv2.resize(face, (im_width, im_height))
 
