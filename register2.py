@@ -11,7 +11,8 @@ def registerPerson(img, path, img_num):
     faces = detect_faces(gray)
 #   multiple face can also be detected
     if(len(faces) > 0):
-#     Taking the 1st face detected
+         # Taking the largest face detected
+        faces = sorted(faces, reverse=True)  # sort based on height of image in desc order
         face_i = faces[0]
         (x, y, w, h) = [v for v in face_i]
 # converting RGB to gray Because it is a one layer image from 0-255 whereas the RGB have three different layer image. 
