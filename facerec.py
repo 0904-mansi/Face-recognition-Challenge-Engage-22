@@ -31,7 +31,9 @@ def train_model():
                 path = subjectpath + '/' + filename # face-sample/1st name/1.png
                 label = id # 0 1 2 3  
                 # Add to training data
-                images.append(cv2.imread(path))# will returnn matrix of pixels
+               # reads the image from the path using the cv2.imread() function and appends it to the images list. This list will contain the pixel matrices of the images used for training the facial recognition model
+                images.append(cv2.imread(path))
+                # appends the label (converted to an integer) to the labels list
                 labels.append(int(label))
             id += 1
 
